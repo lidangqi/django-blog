@@ -37,6 +37,7 @@ nosetests.xml
 .history
 
 # Mr Developer
+.envs/.production
 .mr.developer.cfg
 .project
 .pydevproject
