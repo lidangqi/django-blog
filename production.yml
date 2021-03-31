@@ -28,4 +28,3 @@ services:
       - static:/apps/django_blog/static
     ports:
       - "81:81"
-      - "443:443"
