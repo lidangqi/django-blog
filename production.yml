@@ -1,0 +1,31 @@
+
+volumes:
+  static:
+
+services:
+  django_blog:
+    build:
+      context: .
+      dockerfile: docker-compose/production/django/Dockerfile
+    image: django_blog
+    container_name: django_blog
+    working_dir: /app
+    volumes:
+      - static:/app/static
+    env_file:
+      - .envs/.production
+    ports:
+      - "8000:8000"
+    command: /start.sh
+
+  nginx:
+    build:
+      context: .
+      dockerfile: docker-compose/production/nginx/Dockerfile
+    image: django_blog_nginx
+    container_name: django_blog_nginx
+    volumes:
+      - static:/apps/django_blog/static
+    ports:
+      - "80:80"
+      - "443:443"

@@ -75,12 +75,11 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'blog',
         'USER': 'root',
-        'PASSWORD': 'password',
-        'HOST': '127.0.0.1',
+        'PASSWORD': os.environ['DJANGO_MYSQLPASS_KEY'],
+        'HOST': os.environ['DJANGO_MYSQLIP_KEY'],
         'PORT': '3306',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
