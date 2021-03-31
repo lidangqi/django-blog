@@ -45,5 +45,5 @@ celerybeat-schedule.db
 celerybeat.pid
 dump.rdb
 db.sqlite3
-settings/local.py
-settings/production.py
+blogproject/settings/local.py
+blogproject/production.py
