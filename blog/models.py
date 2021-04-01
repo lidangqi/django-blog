@@ -36,10 +36,15 @@ class Post(models.Model):
   category = models.ForeignKey(Category, on_delete=models.CASCADE, verbose_name='分类')
   tags = models.ManyToManyField(Tag, blank=True, verbose_name='标签')
   author = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='作者')
+  views = models.PositiveBigIntegerField(default=0, editable=False)
 
   # def save(self, *args, **kwargs):
   #   self.modified_time = timezone.now()
   #   super().save(*args, **kwargs)
+
+  def increase_views(self):
+    self.views += 1
+    self.save(update_fields=['views'])
 
   class Meta:
     verbose_name = '文章'

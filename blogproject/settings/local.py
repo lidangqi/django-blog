@@ -7,3 +7,16 @@ SECRET_KEY = '%k^!^6-(z^+l*)i6-qg*el%5*2-@%+jx)jktqb!5t+j$5q1!9&'
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
+
+DATABASES = {
+    'default': {
+        # 'ENGINE': 'django.db.backends.sqlite3',
+        # 'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'blog',
+        'USER': 'root',
+        'PASSWORD': 'password',
+        'HOST': '127.0.0.1',
+        'PORT': '3306',
+    }
+}
