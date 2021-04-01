@@ -14,5 +14,5 @@ services:
     env_file:
       - .envs/.production
     ports:
-      - "8001:8000"
+      - "9091:8000"
     command: /start.sh
