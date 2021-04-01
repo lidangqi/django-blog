@@ -27,4 +27,4 @@ services:
     volumes:
       - static:/apps/django_blog/static
     ports:
-      - "81:80"
+      - "80:80"
