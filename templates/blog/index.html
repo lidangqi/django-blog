@@ -26,25 +26,10 @@
         <div class="no-post">暂时还没有发布的文章！</div>
     {% endfor %}
 
-    <!-- 简单分页效果
-    <div class="pagination-simple">
-        <a href="#">上一页</a>
-        <span class="current">第 6 页 / 共 11 页</span>
-        <a href="#">下一页</a>
-    </div>
-    -->
     <div class="pagination">
-        <ul>
-            <li><a href="">1</a></li>
-            <li><a href="">...</a></li>
-            <li><a href="">4</a></li>
-            <li><a href="">5</a></li>
-            <li class="current"><a href="">6</a></li>
-            <li><a href="">7</a></li>
-            <li><a href="">8</a></li>
-            <li><a href="">...</a></li>
-            <li><a href="">11</a></li>
-        </ul>
+        {% if is_paginated %}
+            {{ page_obj.render }}
+        {% endif %}
     </div>
 {% endblock main %}
 

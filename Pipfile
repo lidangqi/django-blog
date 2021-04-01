@@ -8,8 +8,10 @@ django = "*"
 mysqlclient = "*"
 markdown = "*"
 gunicorn = "*"
+django-pure-pagination = "*"
 
 [dev-packages]
+coverage = "*"
 
 [requires]
 python_version = "3.8"
