@@ -24,3 +24,5 @@ DATABASES = {
         'PORT': '3306',
     }
 }
+
+HAYSTACK_CONNECTIONS['default']['URL'] = 'http://django-blog-elasticsearch:9200/'
