@@ -9,6 +9,8 @@ mysqlclient = "*"
 markdown = "*"
 gunicorn = "*"
 django-pure-pagination = "*"
+django-haystack = "*"
+elasticsearch = "*"
 
 [dev-packages]
 coverage = "*"

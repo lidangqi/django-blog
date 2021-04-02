@@ -20,3 +20,5 @@ DATABASES = {
         'PORT': '3306',
     }
 }
+
+HAYSTACK_CONNECTIONS['default']['URL'] = 'http://elasticsearch-local:9200/'

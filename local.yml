@@ -1,7 +1,10 @@
 version: '3'
 
+volumes:
+  esdata-local:
+
 services:
-  django_blog_local:
+  django-blog-local:
     build:
       context: .
       dockerfile: ./docker-compose/local/Dockerfile
@@ -15,3 +18,26 @@ services:
     ports:
       - "8000:8000"
     command: /start.sh
+    depends_on:
+      - elasticsearch-local
+
+  elasticsearch-local:
+    build:
+      context: .
+      dockerfile: ./docker-compose/production/elasticsearch/Dockerfile
+    image: elasticsearch-local
+    container_name: elasticsearch-local
+    volumes:
+      - esdata-local:/usr/share/elasticsearch/data
+    ports:
+      - "9200:9200"
+    environment:
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+      nproc: 65536
+      nofile:
+        soft: 65536
+        hard: 65536

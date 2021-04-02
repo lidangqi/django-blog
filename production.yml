@@ -1,9 +1,10 @@
 
 volumes:
   static:
+  esdata:
 
 services:
-  django_blog:
+  django-blog:
     build:
       context: .
       dockerfile: docker-compose/production/django/Dockerfile
@@ -17,6 +18,8 @@ services:
     ports:
       - "8000:8000"
     command: /start.sh
+    depends_on:
+      - elasticsearch
 
   nginx:
     build:
@@ -28,3 +31,24 @@ services:
       - static:/apps/django-blog/static
     ports:
       - "80:80"
+
+  elasticsearch:
+    build:
+      context: .
+      dockerfile: ./docker-compose/production/elasticsearch/Dockerfile
+    image: django-blog-elasticsearch
+    container_name: django-blog-elasticsearch
+    volumes:
+      - esdata:/usr/share/elasticsearch/data
+    ports:
+      - "9200:9200"
+    environment:
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+      nproc: 65536
+      nofile:
+        soft: 65536
+        hard: 65536

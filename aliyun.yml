@@ -2,7 +2,7 @@ volumes:
   static:
 
 services:
-  django_blog:
+  django-blog:
     build:
       context: .
       dockerfile: docker-compose/production/django/Dockerfile

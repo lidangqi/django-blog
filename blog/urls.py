@@ -14,5 +14,5 @@ urlpatterns = [
     # path('tags/<int:pk>/', views.tag, name='tag'),
     path('tags/<int:pk>/', views.TagView.as_view(), name='tag'),
 
-    path('search/', views.search, name='search'),
+    # path('search/', views.search, name='search'),
 ]
