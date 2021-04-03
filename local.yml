@@ -17,7 +17,6 @@ services:
       - .envs/.production
     ports:
       - "8000:8000"
-      - "3306:3306"
     command: /start.sh
     depends_on:
       - elasticsearch_local
