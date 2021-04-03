@@ -2,12 +2,12 @@ volumes:
   static:
 
 services:
-  django-blog:
+  django_blog:
     build:
       context: .
       dockerfile: docker-compose/production/django/Dockerfile
-    image: django-blog
-    container_name: django-blog
+    image: django_blog
+    container_name: django_blog
     working_dir: /app
     volumes:
       - static:/app/static

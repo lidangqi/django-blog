@@ -117,13 +117,13 @@ HAYSTACK_CONNECTIONS = {
     "default": {
         "ENGINE": "blog.elasticsearch2_ik_backend.Elasticsearch2IkSearchEngine",
         "URL": "",
-        "INDEX_NAME": "django-blog",
+        "INDEX_NAME": "hellodjango_blog_tutorial",
     },
 }
 HAYSTACK_SEARCH_RESULTS_PER_PAGE = 10
 
-HAYSTACK_SIGNAL_PROCESSOR = "haystack.signals.RealtimeSignalProcessor"
+enable = os.environ.get("ENABLE_HAYSTACK_REALTIME_SIGNAL_PROCESSOR", "yes")
+if enable in {"true", "True", "yes"}:
+    HAYSTACK_SIGNAL_PROCESSOR = "haystack.signals.RealtimeSignalProcessor"
 
 HAYSTACK_CUSTOM_HIGHLIGHTER = "blog.utils.Highlighter"
-# HAYSTACK_DEFAULT_OPERATOR = 'AND'
-# HAYSTACK_FUZZY_MIN_SIM = 0.1

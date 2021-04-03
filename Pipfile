@@ -10,7 +10,8 @@ markdown = "*"
 gunicorn = "*"
 django-pure-pagination = "*"
 django-haystack = "*"
-elasticsearch = "*"
+elasticsearch = "==2.4.1"
+urllib3 = "*"
 
 [dev-packages]
 coverage = "*"

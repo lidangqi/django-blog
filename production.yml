@@ -1,17 +1,19 @@
 
 volumes:
   static:
+  database:
   esdata:
 
 services:
-  django-blog:
+  django_blog:
     build:
       context: .
       dockerfile: docker-compose/production/django/Dockerfile
-    image: django-blog
-    container_name: django-blog
+    image: django_blog
+    container_name: django_blog
     working_dir: /app
     volumes:
+      - database:/app/database
       - static:/app/static
     env_file:
       - .envs/.production
@@ -25,19 +27,20 @@ services:
     build:
       context: .
       dockerfile: docker-compose/production/nginx/Dockerfile
-    image: django-blog-nginx
-    container_name: django-blog-nginx
+    image: django_blog_nginx
+    container_name: django_blog_nginx
     volumes:
-      - static:/apps/django-blog/static
+      - static:/apps/django_blog/static
     ports:
       - "80:80"
+      - "443:443"
 
   elasticsearch:
     build:
       context: .
       dockerfile: ./docker-compose/production/elasticsearch/Dockerfile
-    image: django-blog-elasticsearch
-    container_name: django-blog-elasticsearch
+    image: django_blog_elasticsearch
+    container_name: django_blog_elasticsearch
     volumes:
       - esdata:/usr/share/elasticsearch/data
     ports:

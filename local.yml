@@ -1,15 +1,15 @@
 version: '3'
 
 volumes:
-  esdata-local:
+  esdata_local:
 
 services:
-  django-blog-local:
+  django_blog_local:
     build:
       context: .
       dockerfile: ./docker-compose/local/Dockerfile
-    image: django-blog-local
-    container_name: django-blog-local
+    image: django_blog_local
+    container_name: django_blog_local
     working_dir: /app
     volumes:
       - .:/app
@@ -17,18 +17,19 @@ services:
       - .envs/.production
     ports:
       - "8000:8000"
+      - "3306:3306"
     command: /start.sh
     depends_on:
-      - elasticsearch-local
+      - elasticsearch_local
 
-  elasticsearch-local:
+  elasticsearch_local:
     build:
       context: .
       dockerfile: ./docker-compose/production/elasticsearch/Dockerfile
-    image: elasticsearch-local
-    container_name: elasticsearch-local
+    image: django_blog_elasticsearch_local
+    container_name: django_blog_elasticsearch_local
     volumes:
-      - esdata-local:/usr/share/elasticsearch/data
+      - esdata_local:/usr/share/elasticsearch/data
     ports:
       - "9200:9200"
     environment:
