@@ -36,7 +36,6 @@ def generate_rich_content(value):
         extensions=[
             "markdown.extensions.extra",
             "markdown.extensions.codehilite",
-            "markdown.extensions.tables",
             # 记得在顶部引入 TocExtension 和 slugify
             TocExtension(slugify=slugify),
         ]
@@ -82,7 +81,6 @@ class Post(models.Model):
     md = markdown.Markdown(extensions=[
         'markdown.extensions.extra',
         'markdown.extensions.codehilite',
-        "markdown.extensions.tables",
     ])
     self.excerpt = strip_tags(md.convert(self.body))[:54]
 
