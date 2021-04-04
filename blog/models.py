@@ -1,3 +1,4 @@
+from mdeditor.fields import MDTextField
 import markdown, re
 from django.db import models
 from django.contrib.auth.models import User
@@ -46,7 +47,7 @@ def generate_rich_content(value):
 
 class Post(models.Model):
   title = models.CharField(max_length=70, verbose_name='标题')
-  body = models.TextField(verbose_name='正文')
+  body = MDTextField(verbose_name='正文')
   created_time = models.DateTimeField(verbose_name='创建时间', default=timezone.now)
   modified_time = models.DateTimeField(verbose_name='修改时间', auto_now=True)
   excerpt = models.CharField(max_length=200, blank=True, verbose_name='摘要信息')

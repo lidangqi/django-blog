@@ -31,6 +31,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     #我的应用
     'haystack',
+    'mdeditor',
     'pure_pagination',
     'blog.apps.BlogConfig',
     'comments.apps.CommentsConfig',
@@ -105,6 +106,10 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads')
+
+MEDIA_URL = '/media/'
 
 # 分页设置
 PAGINATION_SETTINGS = {
