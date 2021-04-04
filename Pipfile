@@ -12,6 +12,7 @@ django-pure-pagination = "*"
 django-haystack = "*"
 elasticsearch = "==2.4.1"
 urllib3 = "*"
+django-simpleui = "*"
 
 [dev-packages]
 coverage = "*"

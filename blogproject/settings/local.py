@@ -1,12 +1,12 @@
 from .common import *
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '%k^!^6-(z^+l*)i6-qg*el%5*2-@%+jx)jktqb!5t+j$5q1!9&'
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', '% k ^!^6-(z ^ +l*)i6-qg*el % 5*2-@ % +jx)jktqb!5t+j$5q1!9 &')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ALLOWED_HOSTS = ['127.0.0.1', 'blog.lidangqi.com', 'django-blog']
 
 DATABASES = {
     'default': {
@@ -15,8 +15,8 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'blog',
         'USER': 'root',
-        'PASSWORD': os.environ['DJANGO_MYSQLPASS_KEY'],
-        'HOST': os.environ['DJANGO_MYSQLIP_KEY'],
+        'PASSWORD': os.environ.get('DJANGO_MYSQLPASS_KEY', 'password'),
+        'HOST': os.environ.get('DJANGO_MYSQLIP_KEY', '127.0.0.1'),
         'PORT': '3306',
     }
 }
