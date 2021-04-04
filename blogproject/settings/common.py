@@ -111,6 +111,8 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads')
 
 MEDIA_URL = '/media/'
 
+X_FRAME_OPTIONS = 'SAMEORIGIN'
+
 # 分页设置
 PAGINATION_SETTINGS = {
     "PAGE_RANGE_DISPLAYED": 4,
