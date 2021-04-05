@@ -56,7 +56,7 @@ class Post(models.Model):
   tags = models.ManyToManyField(Tag, blank=True, verbose_name='标签')
   author = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='作者')
   views = models.PositiveBigIntegerField(default=0, editable=False)
-
+  index_img = models.ImageField(upload_to='images/', blank=True, verbose_name='文章封面')
   # def save(self, *args, **kwargs):
   #   self.modified_time = timezone.now()
   #   super().save(*args, **kwargs)

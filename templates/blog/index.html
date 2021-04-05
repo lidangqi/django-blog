@@ -9,11 +9,11 @@
 {% for post in post_list %}
     <div class="row mx-auto index-card">
         <div class="col-12 col-md-4 m-auto index-img">
-            <a href="/post/%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E5%B7%A5%E5%85%B7-ansible%E8%AF%A6%E8%A7%A3%EF%BC%88%E4%B8%80%EF%BC%89.html"
+            <a href="{{ post.get_absolute_url }}"
                 target="_self">
-                <img src="https://rmt.dogedoge.com/fetch/fluid/storage/hexo-static/cover.jpg?w=480&fmt=webp"
+                <img src="{{ post.index_img.url }}"
                     srcset="{% static 'blog/img/loading.gif' %}" 
-                    lazyload alt="自动化运维工具--ansible详解（一）">
+                    lazyload alt="">
             </a>
         </div>
         <article class="col-12 col-md-8 mx-auto index-info">
