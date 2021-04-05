@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block subtitle %}
+<div class="page-header text-center fade-in-up">
+  <span class="h2" id="subtitle" title="博客文章归档"></span>
+</div>
+{% endblock subtitle %}
+{% block main %}
+<div class="list-group">
+{% regroup post_list by created_time.year as year_post_group %}
+<p class="h4">共计 {{ post_list|length }} 篇文章</p>
+<hr>
+{% for year in year_post_group %}
+<p class="h5">{{ year.grouper }}</p>
+{% regroup year.list by created_time.month as month_post_group %}
+  {% for month in month_post_group %}
+      {% for post in month.list %}
+          <a href="{{ post.get_absolute_url }}" class="list-group-item list-group-item-action">
+            <span class="archive-post-title">{{ post.title }}</span>
+            <time style="float: right;">{{ post.created_time }}</time>
+          </a>
+      {% endfor %}
+  {% endfor %}
+{% endfor %}
+</div>
+{% endblock main %}

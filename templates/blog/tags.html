@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block subtitle %}
+<div class="page-header text-center fade-in-up">
+  <span class="h2" id="subtitle" title="博客标签云"></span>
+</div>
+{% endblock subtitle %}
+{% block main %}
+<div class="text-center tagcloud">
+{% for tag in tag_list %}
+  <a href="{% url 'blog:tag' tag.pk %}" style="font-size: 15px; color: #bbe">{{ tag.name }}</a>
+{% endfor %}
+</div>
+{% endblock main %}

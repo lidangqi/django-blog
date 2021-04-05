@@ -1,36 +1,56 @@
 {% extends 'base.html' %}
+{% load static %}
+{% block subtitle %}
+<div class="page-header text-center fade-in-up">
+    <span class="h2" id="subtitle" title="一款 Material Design 风格的 Django 主题"></span>
+</div>
+{% endblock subtitle %}
 {% block main %}
-    {% for post in post_list %}
-        <article class="post post-{{ post.pk }}">
-            <header class="entry-header">
-                <h1 class="entry-title">
-                    <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
-                </h1>
-                <div class="entry-meta">
-                    <span class="post-category"><a href="#">{{ post.category.name }}</a></span>
-                    <span class="post-date"><a href="#"><time class="entry-date"
-                            datetime="{{ post.created_time }}">{{ post.created_time }}</time></a></span>
-                    <span class="post-author"><a href="#">{{ post.author }}</a></span>
-                    <span class="comments-link"><a href="{{ post.get_absolute_url }}#comment-area">{{ post.comment_set.count }} 评论</a></span>
-                    <span class="views-count"><a href="#">{{ post.views }} 阅读</a></span>
+{% for post in post_list %}
+    <div class="row mx-auto index-card">
+        <div class="col-12 col-md-4 m-auto index-img">
+            <a href="/post/%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E5%B7%A5%E5%85%B7-ansible%E8%AF%A6%E8%A7%A3%EF%BC%88%E4%B8%80%EF%BC%89.html"
+                target="_self">
+                <img src="https://rmt.dogedoge.com/fetch/fluid/storage/hexo-static/cover.jpg?w=480&fmt=webp"
+                    srcset="{% static 'blog/img/loading.gif' %}" 
+                    lazyload alt="自动化运维工具--ansible详解（一）">
+            </a>
+        </div>
+        <article class="col-12 col-md-8 mx-auto index-info">
+            <h1 class="index-header">
+                <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+            </h1>
+            <p class="index-excerpt">
+                <a href="{{ post.get_absolute_url }}">{{ post.excerpt }}...</a>
+            </p>
+            <div class="index-btm post-metas">
+                <div class="post-meta mr-3">
+                    <i class="iconfont icon-date"></i>
+                    <time datetime="{{ post.created_time }}" pubdate>
+                        {{ post.created_time }}
+                    </time>
                 </div>
-            </header>
-            <div class="entry-content clearfix">
-                <p>{{ post.excerpt }}...</p>
-                <div class="read-more cl-effect-14">
-                    <a href="{{ post.get_absolute_url }}" class="more-link">继续阅读 <span class="meta-nav">→</span></a>
+                <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    <a href="{% url 'blog:category' post.category.pk %}">{{ post.category.name }}</a>
+                </div>
+                <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                      {% for tag in  post.tags.all %}
+                        <a href="{% url 'blog:tag' tag.pk %}">{{ tag }}</a>
+                      {% endfor %}
                 </div>
             </div>
         </article>
-    {% empty %}
-        <div class="no-post">暂时还没有发布的文章！</div>
-    {% endfor %}
-
-    <div class="pagination">
-        {% if is_paginated %}
-            {{ page_obj.render }}
-        {% endif %}
     </div>
+{% empty %}
+<div class="no-post">暂时还没有发布的文章！</div>
+{% endfor %}
+<div class="pagination">
+    {% if is_paginated %}
+    {{ page_obj.render }}
+    {% endif %}
+</div>
 {% endblock main %}
 
 {% block toc %}

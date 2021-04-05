@@ -1,4 +1,5 @@
 from mdeditor.fields import MDTextField
+from django.shortcuts import render
 import markdown, re
 from django.db import models
 from django.contrib.auth.models import User
@@ -50,7 +51,7 @@ class Post(models.Model):
   body = MDTextField(verbose_name='正文')
   created_time = models.DateTimeField(verbose_name='创建时间', default=timezone.now)
   modified_time = models.DateTimeField(verbose_name='修改时间', auto_now=True)
-  excerpt = models.CharField(max_length=200, blank=True, verbose_name='摘要信息')
+  excerpt = models.CharField(max_length=400, blank=True, verbose_name='摘要信息')
   category = models.ForeignKey(Category, on_delete=models.CASCADE, verbose_name='分类')
   tags = models.ManyToManyField(Tag, blank=True, verbose_name='标签')
   author = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='作者')
@@ -59,7 +60,7 @@ class Post(models.Model):
   # def save(self, *args, **kwargs):
   #   self.modified_time = timezone.now()
   #   super().save(*args, **kwargs)
-
+  
   def increase_views(self):
     self.views += 1
     self.save(update_fields=['views'])

@@ -1,5 +1,10 @@
 {% extends 'base.html' %}
 {% load comments_extras %}
+{% block subtitle %}
+<div class="page-header text-center fade-in-up">
+  <span class="h2" id="subtitle" title="post.title"></span>
+</div>
+{% endblock subtitle %}
 {% block main %}
     <article class="post post-{{ post.pk }}">
         <header class="entry-header">

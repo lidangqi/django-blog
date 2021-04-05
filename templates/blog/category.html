@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block subtitle %}
+<div class="page-header text-center fade-in-up">
+  <span class="h2" id="subtitle" title="博客文章分类"></span>
+</div>
+{% endblock subtitle %}
+{% block main %}
+<div class="category-list">
+{% for category in category_list %}
+  <div class="category row">
+    <a class="category-item collapsed list-group-item category-item-action col-10 col-md-11"
+      id="heading-{{ category.name }}" role="tab" data-toggle="collapse"
+      href="#collapse-{{ category.name }}" aria-expanded="false">
+      {{ category.name }}
+      <i class="iconfont icon-arrowright"></i>
+    </a>
+    <a href="{% url 'blog:category' category.pk %}" class="category-count col-2 col-md-1">
+      <i class="iconfont icon-articles"></i>
+      <span>{{ category.num_posts }}</span>
+    </a>
+    <div class="category-collapse">
+      <div id="collapse-{{ category.name }}" class="collapse in" role="tabpanel"
+        aria-labelledby="heading-{{ category.name }}">
+        {% for post in post_list %}
+        <a href="{{ post.get_absolute_url }}"
+          class="list-group-item list-group-item-action">
+          <span class="category-post">{{ post.title }}</span>
+        </a>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+{% endfor %}
+</div>
+{% endblock main %}

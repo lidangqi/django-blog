@@ -8,7 +8,8 @@ from django.utils.text import slugify
 from markdown.extensions.toc import TocExtension
 from pure_pagination.mixins import PaginationMixin
 from django.contrib import messages
-from django.db.models import Q
+from django.db.models import Q, Count
+from braces.views import SetHeadlineMixin
 
 # Create your views here.
 
@@ -20,12 +21,13 @@ from django.db.models import Q
 #     'post_list': post_list,
 #   })
 
+
 class IndexView(PaginationMixin, ListView):
   model = Post
   template_name = 'blog/index.html'
   context_object_name = 'post_list'
   paginate_by = 10
-
+  
 # def detail(request, pk):
 #   post = get_object_or_404(Post, pk=pk)
 
@@ -80,6 +82,11 @@ class ArchiveView(IndexView):
     return super(ArchiveView, self).get_queryset().filter(created_time__year=year, created_time__month=month)
   
 
+class PostArchivesView(SetHeadlineMixin, ListView):
+    headline = "归档"
+    model = Post
+    template_name = "blog/archives.html"
+
 # def category(request, pk):
 #     cate = get_object_or_404(Category, pk=pk)
 #     post_list = Post.objects.filter(category=cate).order_by('-created_time')
@@ -91,6 +98,12 @@ class CategoryView(IndexView):
     return super(CategoryView, self).get_queryset().filter(category=cate)
 
 
+class CategoryListView(SetHeadlineMixin, ListView):
+    model = Category
+    headline = "分类"
+    template_name = "blog/category.html"
+    queryset = Category.objects.all().annotate(num_posts=Count("post"))
+
 # def tag(request, pk):
 #     t = get_object_or_404(Tag, pk=pk)
 #     post_list = Post.objects.filter(tags=t).order_by('-created_time')
@@ -99,6 +112,12 @@ class TagView(IndexView):
   def get_queryset(self):
     t = get_object_or_404(Tag, pk=self.kwargs.get('pk'))
     return super(TagView, self).get_queryset().filter(tags=t)
+
+
+class TagListView(SetHeadlineMixin, ListView):
+    model = Tag
+    headline = "标签"
+    template_name = "blog/tags.html"
 
 def search(request):
     q = request.GET.get('q')
