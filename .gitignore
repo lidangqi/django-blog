@@ -17,8 +17,6 @@ sdist
 dump.rdb
 develop-eggs
 .installed.cfg
-lib
-lib64
 
 
 
