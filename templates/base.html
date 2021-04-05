@@ -2,6 +2,7 @@
 {% load blog_extras %}
 <!DOCTYPE html>
 <html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
 <head>
     <meta charset="UTF-8">
     <link rel="apple-touch-icon" sizes="76x76" href="{% static 'blog/img/favicon.png' %}">
@@ -15,6 +16,10 @@
     <meta name="keywords" content="">
     <title>李党旗的博客</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+    <link rel="stylesheet" href="{% static 'blog/lib/hint/hint.min.css' %}" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/github-gist.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
     <!-- 主题依赖的图标库，不要自行修改 -->
     <link rel="stylesheet" href="https://at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
     <link rel="stylesheet" href="https://at.alicdn.com/t/font_1736178_kmeydafke9r.css">
@@ -93,6 +98,7 @@
     <script src="{% static 'blog/js/color-schema.js' %}"></script>
     <meta name="generator" content="Hexo 5.4.0">
 </head>
+
 <body>
     <header style="height: 100vh;">
         <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
@@ -152,16 +158,23 @@
         {% endblock subtitle %}
     </header>
     <main>
-        <div class="container nopadding-x-md">
-            <div class="py-5" id="board" style=margin-top:0>
-                <div class="container">
-                    <div class="row">
-                      <div class="col-12 col-md-10 m-auto">
-                            {% block main %}
-                            {% endblock main %}
-                      </div>
+        <div class="container-fluid nopadding-x">
+            <div class="row nomargin-x">
+                <div class="d-none d-lg-block col-lg-2"></div>
+                <div class="container nopadding-x-md">
+                    <div class="py-5" id="board" style=margin-top:0>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-12 col-md-10 m-auto">
+                                    {% block main %}
+                                    {% endblock main %}
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
+                {% block toc %}
+                {% endblock toc %}
             </div>
         </div>
         <a id="scroll-top-button" href="#" role="button">
@@ -180,10 +193,10 @@
                     </div>
                     <div class="modal-body mx-3">
                         <div class="md-form mb-5">
-                           <form role="search" method="get" id="searchform" action="{% url 'haystack_search' %}">
+                            <form role="search" method="get" id="searchform" action="{% url 'haystack_search' %}">
                                 <input type="text" name="q" id="local-search-input" class="form-control validate">
                                 <label data-error="x" data-success="v" for="local-search-input">关键词</label>
-                           </form>
+                            </form>
                         </div>
                         <div class="list-group" id="local-search-result"></div>
                     </div>
@@ -218,6 +231,9 @@
     <script src="{% static 'blog/js/plugins.js' %}"></script>
     <!-- Plugins -->
     <script src="{% static 'blog/js/img-lazyload.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js"></script>
     <script>
@@ -242,4 +258,5 @@
     <!-- 主题的启动项 保持在最底部 -->
     <script src="{% static 'blog/js/boot.js' %}"></script>
 </body>
+
 </html>

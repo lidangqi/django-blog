@@ -8,6 +8,25 @@
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="page-header text-center fade-in-up">
         <span class="h2" id="subtitle" title="{{ post.title }}"></span>
+        <div class="mt-3">
+          <span class="post-meta">
+            <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+            <time datetime="2021-02-01 06:30" pubdate>
+              2021年2月1日 早上
+            </time>
+          </span>
+        </div>
+        <div class="mt-1">
+          <span class="post-meta mr-2">
+            <i class="iconfont icon-chart"></i>
+            9.8k 字
+          </span>
+          <span class="post-meta mr-2">
+            <i class="iconfont icon-clock-fill"></i>
+            148
+            分钟
+          </span>
+        </div>
       </div>
       <div class="scroll-down-bar">
         <i class="iconfont icon-arrowdown"></i>
@@ -33,26 +52,49 @@
   <div class="entry-content clearfix">
     {{ post.body_html | custom_markdown | safe }}
   </div>
-</article>
-<section class="comment-area" id="comment-area">
   <hr>
-  <h3>发表评论</h3>
-  {% show_comment_form post %}
-  <div class="comment-list-panel">
-    {% show_comments post %}
+  <div>
+    <div class="post-metas mb-3">
+      <div class="post-meta mr-3">
+        <i class="iconfont icon-category"></i>
+        <a class="hover-with-bg" href="/categories/DevOps/">{{ post.category.name }}</a>
+      </div>
+    </div>
+    <p class="note note-warning">
+      本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh"
+        rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+    </p>
+    {% comment %} <div class="post-prevnext">
+      <article class="post-prev col-6">
+        <a href="/post/hello-world.html">
+          <i class="iconfont icon-arrowleft"></i>
+          <span class="hidden-mobile">Hello World</span>
+          <span class="visible-mobile">上一篇</span>
+        </a>
+      </article>
+      <article class="post-next col-6">
+      </article>
+    </div> {% endcomment %}
   </div>
-</section>
+  <section class="comment-area" id="comment-area">
+    <hr>
+    <h3>发表评论</h3>
+    {% show_comment_form post %}
+    <div class="comment-list-panel">
+      {% show_comments post %}
+    </div>
+  </section>
+</article>
 {% endblock main %}
-
 {% block toc %}
-{% if post.toc %}
-<div class="widget widget-content">
-  <h3 class="widget-title">文章目录</h3>
-  <div class="toc">
-    <ul>
-      {{ post.toc|safe }}
-    </ul>
+<div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+  <div style="visibility: visible;">
+    <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+    <div class="toc-body" id="toc-body">
+      <ol>
+        {{ post.toc | safe }}
+      </ol>
+    </div>
   </div>
 </div>
-{% endif %}
 {% endblock toc %}
