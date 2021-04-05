@@ -163,18 +163,24 @@
                 {% if post.toc %}
                 <div class="d-none d-lg-block col-lg-2"></div>
                 {% endif %}
-                <div class="container nopadding-x-md">
-                    <div class="py-5" id="board" style=margin-top:0>
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-12 col-md-10 m-auto">
-                                    {% block main %}
-                                    {% endblock main %}
+                {% if post.toc %}
+                <div class="col-lg-8 nopadding-x-md">
+                {% endif %}
+                    <div class="container nopadding-x-md">
+                        <div class="py-5" id="board" style=margin-top:0>
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-12 col-md-10 m-auto">
+                                        {% block main %}
+                                        {% endblock main %}
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                {% if post.toc %}
                 </div>
+                {% endif %}
                 {% block toc %}
                 {% endblock toc %}
             </div>
