@@ -21,7 +21,12 @@
     <link rel="stylesheet" href="{% static 'blog/css/main.css' %}">
     <link rel="stylesheet" href="{% static 'blog/css/code.css' %}">
     <!-- 自定义样式保持在最底部 -->
-    
+    <style>
+        /* 搜索关键词高亮 */
+        span.highlighted {
+            color: red;
+        }
+    </style>
     <script id="fluid-configs">
         var Fluid = window.Fluid || {};
         var CONFIG = {
@@ -143,18 +148,8 @@
                 </div>
             </div>
         </nav>
-        <div class="banner" id="banner" parallax=true style="background: url('{% static 'blog/img/banner.jpg' %}') no-repeat center center;
-           background-size: cover;">
-            <div class="full-bg-img">
-                <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-                        {% block subtitle %}
-                        {% endblock subtitle %}
-                    <div class="scroll-down-bar">
-                        <i class="iconfont icon-arrowdown"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
+        {% block subtitle %}
+        {% endblock subtitle %}
     </header>
     <main>
         <div class="container nopadding-x-md">
@@ -185,8 +180,10 @@
                     </div>
                     <div class="modal-body mx-3">
                         <div class="md-form mb-5">
-                            <input type="text" id="local-search-input" class="form-control validate">
-                            <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+                           <form role="search" method="get" id="searchform" action="{% url 'haystack_search' %}">
+                                <input type="text" name="q" id="local-search-input" class="form-control validate">
+                                <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+                           </form>
                         </div>
                         <div class="list-group" id="local-search-result"></div>
                     </div>
@@ -233,7 +230,7 @@
     <script src="{% static 'blog/js/local-search.js' %}"></script>
     <script>
         (function () {
-            var path = "/local-search.xml";
+            var path = "{% static 'blog/xml/local-search.xml'%}";
             $('#local-search-input').on('click', function () {
                 searchFunc(path, 'local-search-input', 'local-search-result');
             });

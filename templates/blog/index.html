@@ -1,8 +1,18 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block subtitle %}
-<div class="page-header text-center fade-in-up">
-    <span class="h2" id="subtitle" title="一款 Material Design 风格的 Django 主题"></span>
+<div class="banner" id="banner" parallax=true style="background: url('{% static 'blog/img/banner.jpg' %}') no-repeat center center;
+           background-size: cover;">
+    <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+            <div class="page-header text-center fade-in-up">
+                <span class="h2" id="subtitle" title="一款 Material Design 风格的 Django 主题"></span>
+            </div>
+            <div class="scroll-down-bar">
+                <i class="iconfont icon-arrowdown"></i>
+            </div>
+        </div>
+    </div>
 </div>
 {% endblock subtitle %}
 {% block main %}
