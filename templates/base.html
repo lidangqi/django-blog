@@ -31,6 +31,30 @@
         span.highlighted {
             color: red;
         }
+        a.nav-link.toc-h1.active {
+            font-weight: bold;
+            color: var(--link-hover-color);
+            text-decoration: none;
+            transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
+        }
+        a.nav-link.toc-h2.active {
+            font-weight: bold;
+            color: var(--link-hover-color);
+            text-decoration: none;
+            transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
+        }
+        a.nav-link.toc-h3.active {
+            font-weight: bold;
+            color: var(--link-hover-color);
+            text-decoration: none;
+            transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
+        }
+        a.nav-link.toc-h4.active {
+            font-weight: bold;
+            color: var(--link-hover-color);
+            text-decoration: none;
+            transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
+        }
     </style>
     <script id="fluid-configs">
         var Fluid = window.Fluid || {};
@@ -96,7 +120,7 @@
     </script>
     <script src="{% static 'blog/js/utils.js' %}"></script>
     <script src="{% static 'blog/js/color-schema.js' %}"></script>
-    <meta name="generator" content="Hexo 5.4.0">
+    <meta name="generator" content="Django 3.1.7">
 </head>
 
 <body>
@@ -236,6 +260,40 @@
     <script>
         $('div.entry-content.clearfix table').addClass('table table-bordered');
         $('div.entry-content.clearfix thead').addClass('thead-light');
+    </script>
+    <script>
+        $(document).ready(function () {
+            var headers = $('.entry-content.clearfix').find('h1, h2, h3, h4, h5, h6');
+            var post_toc = $('#post-toc');
+            var header_level = 'h1';
+            // 生成目录
+            for (var header of headers) {
+                var new_a = $('<a class="nav-link"></a>');
+                new_a.addClass('toc-' + header.localName);
+                new_a.attr('href', '#' + header.getAttribute('id'));
+                new_a.text(header.innerText);
+                post_toc.append(new_a);
+            };
+            // 绑定滚动监听
+            $('body').scrollspy({ target: '#post-toc' });
+        });
+
+        var toc_position = $('#tocs').offset().top;
+        var toc_width = $('#tocs').width();
+
+        // 滚动事件，修改目录部分的 position
+        $(window).scroll(function () {
+            var toc = $('#tocs');
+            if ($(window).scrollTop() >= toc_position - 12) {
+                toc.css('width', toc_width);
+                toc.css('top', 96);
+                toc.css('position', 'fixed');
+            } else {
+                toc.css('width', '');
+                toc.css('top', '');
+                toc.css('position', '');
+            };
+        });
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js"></script>
     <script src="{% static 'blog/js/debouncer.js' %}"></script>

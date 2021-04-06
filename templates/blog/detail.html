@@ -87,13 +87,21 @@
 </article>
 {% endblock main %}
 {% block toc %}
-<div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+{% comment %} <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
   <div id="toc" style="visibility: visible;">
     <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
     <div class="toc-body" id="toc-body">
       <ul>
         {{ post.toc | safe }}
       </ul>
+    </div>
+  </div>
+</div> {% endcomment %}
+<div class="d-none d-lg-block col-lg-2 toc-container">
+  <div id="tocs" style="visibility: visible;">
+    <div class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</div>
+    <div style="max-height: calc(100vh - 120px); overflow: hidden; overflow-y: auto;">
+        <nav class="nav flex-column" id="post-toc"></nav>
     </div>
   </div>
 </div>
