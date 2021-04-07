@@ -34,7 +34,7 @@
 
 .admonition.danger .admonition-title::before,
 .admonition.error .admonition-title::before {
-  background: url("img/error-warning-fill.svg") no-repeat;
+  background: url("img/error-warning-fill.png") no-repeat;
   background-size: contain;
 }
 
@@ -49,7 +49,7 @@
 .admonition.caution .admonition-title::before,
 .admonition.attention .admonition-title::before {
   color: #f0a742;
-  background: url("img/alert-fill.svg") no-repeat;
+  background: url("img/alert-fill.png") no-repeat;
   background-size: contain;
 }
 
@@ -61,7 +61,7 @@
 
 .admonition.important .admonition-title::before,
 .admonition.note .admonition-title::before {
-  background: url("img/information-fill.svg") no-repeat;
+  background: url("img/information-fill.png") no-repeat;
   background-size: contain;
 }
 
@@ -73,6 +73,6 @@
 
 .admonition.hint .admonition-title::before,
 .admonition.tip .admonition-title::before {
-  background: url("img/lightbulb-line.svg") no-repeat;
+  background: url("img/lightbulb-line.png") no-repeat;
   background-size: contain;
 }
