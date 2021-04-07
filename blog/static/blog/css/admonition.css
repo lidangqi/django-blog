@@ -1,0 +1,78 @@
+.admonition {
+  padding: 7.5px 30px 7.5px 0;
+  margin-top: 7.5px;
+  margin-bottom: 15px;
+  border-radius: 3px;
+}
+
+.admonition p:not(:first-child) {
+  margin: 0.5em 1em 0.5em 1em;
+  font-size: 85%;
+}
+
+.admonition .admonition-title {
+  margin-top: 0;
+  font-weight: 600;
+  padding: 0.1em 0 0.1em 0.5em;
+}
+
+.admonition .admonition-title::before {
+  content: "";
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  vertical-align: top;
+  margin-top: 4px;
+  margin-right: 2px;
+}
+
+.admonition.danger,
+.admonition.error {
+  color: #db5757;
+  background-color: #f8dddd;
+}
+
+.admonition.danger .admonition-title::before,
+.admonition.error .admonition-title::before {
+  background: url("img/error-warning-fill.svg") no-repeat;
+  background-size: contain;
+}
+
+.admonition.warning,
+.admonition.caution,
+.admonition.attention {
+  color: #f0a742;
+  background-color: #fcedd9;
+}
+
+.admonition.warning .admonition-title::before,
+.admonition.caution .admonition-title::before,
+.admonition.attention .admonition-title::before {
+  color: #f0a742;
+  background: url("img/alert-fill.svg") no-repeat;
+  background-size: contain;
+}
+
+.admonition.important,
+.admonition.note {
+  color: #5eba5e;
+  background-color: #dff1df;
+}
+
+.admonition.important .admonition-title::before,
+.admonition.note .admonition-title::before {
+  background: url("img/information-fill.svg") no-repeat;
+  background-size: contain;
+}
+
+.admonition.hint,
+.admonition.tip {
+  color: #3986ac;
+  background-color: #d7e7ee;
+}
+
+.admonition.hint .admonition-title::before,
+.admonition.tip .admonition-title::before {
+  background: url("img/lightbulb-line.svg") no-repeat;
+  background-size: contain;
+}
