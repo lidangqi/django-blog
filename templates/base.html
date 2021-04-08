@@ -309,11 +309,7 @@
     <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js"></script>
     <script>
-        var clipboard = new ClipboardJS('.copybtn', {
-            text: function(trigger) {
-                return trigger.getAttribute('aria-label') || 'success';
-            }
-        });
+        var clipboard = new ClipboardJS('.copybtn');
 
         clipboard.on('success', function(e) {
             console.info('Action:', e.action);
