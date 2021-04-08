@@ -26,6 +26,8 @@
     <link rel="stylesheet" href="{% static 'blog/css/main.css' %}">
     <link rel="stylesheet" href="{% static 'blog/css/code.css' %}">
     <link rel="stylesheet" href="{% static 'blog/css/admonition.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.7.2/build/styles/default.min.css" />
+    <link rel="stylesheet" href="{% static 'blog/css/literal.css' %}">
     <!-- 自定义样式保持在最底部 -->
     <style>
         /* 搜索关键词高亮 */
@@ -255,6 +257,20 @@
         NProgress.start()
         window.addEventListener('load', function () {
             NProgress.done();
+        })
+    </script>
+    <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.7.2/build/highlight.min.js"></script>
+    <script>
+        {
+            #
+            hljs.initHighlightingOnLoad();#
+        } {
+            #
+            hljs.initLineNumbersOnLoad();#
+        }
+
+        $(function () {
+            $('table').addClass('table')
         })
     </script>
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>

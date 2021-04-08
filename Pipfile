@@ -17,6 +17,7 @@ django-mdeditor = "*"
 django-braces = "*"
 pillow = "*"
 pygments = "*"
+pymdown-extensions = "==7.1"
 
 [dev-packages]
 coverage = "*"
