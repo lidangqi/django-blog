@@ -9,49 +9,8 @@ from django.utils.html import strip_tags
 from django.utils.text import slugify
 from markdown.extensions.toc import TocExtension
 from django.utils.functional import cached_property
-from functools import wraps
-import pymdownx.superfences
-from pymdownx.superfences import SuperFencesBlockPreprocessor, highlight_validator
 
 # Create your models here.
-
-def _highlight_validator(language, options):
-    filename = options.pop("filename", "")
-    okay = highlight_validator(language, options)
-    if filename != "":
-        options["filename"] = filename
-    return okay
-
-
-def _highlight(method):
-    @wraps(method)
-    def wrapper(self, src, language, options, md, classes=None, id_value="", **kwargs):
-        filename = options.get("filename", "")
-        code = method(
-            self,
-            src,
-            language,
-            options,
-            md,
-            classes=classes,
-            id_value=id_value,
-            **kwargs
-        )
-        if filename == "":
-            return code
-        return '<div class="literal-block"><div class="code-block-caption">{}</div>{}</div>'.format(
-            filename, code
-        )
-
-    return wrapper
-
-# Monkey patch pymdownx.superfences for code block caption purpose
-pymdownx.superfences.highlight_validator = _highlight_validator
-
-SuperFencesBlockPreprocessor.highlight = _highlight(
-    SuperFencesBlockPreprocessor.highlight
-)
-
 class Category(models.Model):
   name = models.CharField(max_length=100)
 
@@ -72,28 +31,27 @@ class Tag(models.Model):
   def __str__(self):
     return self.name
 
-def generate_rich_content(value, *, toc_depth=2, toc_url=""):
+def generate_rich_content(value):
     md = markdown.Markdown(
         extensions=[
             "markdown.extensions.extra",
             "markdown.extensions.codehilite",
             "markdown.extensions.admonition",
-            "markdown.extensions.nl2br",
-            TocExtension(slugify=slugify, toc_depth=toc_depth),
-            # "pymdownx.extra",
-            # "pymdownx.magiclink",
-            # "pymdownx.tasklist",
-            # "pymdownx.tilde",
-            # "pymdownx.caret",
-            # "pymdownx.superfences",
-            # "pymdownx.tabbed",
-            # "pymdownx.highlight",
-            # "pymdownx.inlinehilite",
+            TocExtension(slugify=slugify),
         ],
-        # extension_configs = {"pymdownx.highlight": {"linenums_style": "pymdownx-inline"}},
     )
     content = md.convert(value)
-    m = re.search(r'<div class="toc">\s*<ul>(.*)</ul>\s*</div>', md.toc, re.S)
+    n = content.count('<div class="codehilite">', 0, len(content))
+    for i in range(n):
+        content = re.sub(r'<div class="codehilite">',
+                    '<div class="codehilite" id="code{}">'
+                    '<button id="ecodecopy" style="float: right;z-index:10" class="copybtn" '
+                    'data-clipboard-action="copy" '
+                    'data-clipboard-target="#code{}"> \
+                    <span id="btn" title="复制"><i class="iconfont icon-copy"></i></span> \
+                    </button>'
+                    .format(i, i), content, 1)
+    m = re.search(r'<div class="toc">\s*<ul>(.*)</ul>\s*</div> ', md.toc, re.S)
     toc = m.group(1) if m is not None else ""
     return {"content": content, "toc": toc}
 
@@ -131,18 +89,10 @@ class Post(models.Model):
     self.modified_time = timezone.now()
 
     md = markdown.Markdown(extensions=[
+        "markdown.extensions.extra",
+        "markdown.extensions.codehilite",
         "markdown.extensions.admonition",
-        "markdown.extensions.nl2br",
         TocExtension(slugify=slugify,),
-        "pymdownx.extra",
-        "pymdownx.magiclink",
-        "pymdownx.tasklist",
-        "pymdownx.tilde",
-        "pymdownx.caret",
-        "pymdownx.superfences",
-        "pymdownx.tabbed",
-        "pymdownx.highlight",
-        "pymdownx.inlinehilite",
     ])
     self.excerpt = strip_tags(md.convert(self.body))[:54]
 

@@ -26,8 +26,6 @@
     <link rel="stylesheet" href="{% static 'blog/css/main.css' %}">
     <link rel="stylesheet" href="{% static 'blog/css/code.css' %}">
     <link rel="stylesheet" href="{% static 'blog/css/admonition.css' %}">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.7.2/build/styles/default.min.css" />
-    <link rel="stylesheet" href="{% static 'blog/css/literal.css' %}">
     <!-- 自定义样式保持在最底部 -->
     <style>
         /* 搜索关键词高亮 */
@@ -259,20 +257,6 @@
             NProgress.done();
         })
     </script>
-    <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.7.2/build/highlight.min.js"></script>
-    <script>
-        {
-            #
-            hljs.initHighlightingOnLoad();#
-        } {
-            #
-            hljs.initLineNumbersOnLoad();#
-        }
-
-        $(function () {
-            $('table').addClass('table')
-        })
-    </script>
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
     <script>
         $('div.entry-content.clearfix table').addClass('table table-bordered table-success');
@@ -322,7 +306,28 @@
     <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js"></script>
+    <script>
+        var clipboard = new ClipboardJS('.copybtn', {
+            text: function(trigger) {
+                return trigger.getAttribute('aria-label') || 'success';
+            }
+        });
+
+        clipboard.on('success', function(e) {
+            console.info('Action:', e.action);
+            console.info('Text:', e.text);
+            console.info('Trigger:', e.trigger);
+            e.clearSelection();
+        });
+
+        clipboard.on('error', function(e) {
+            console.error('Action:', e.action);
+            console.error('Trigger:', e.trigger);
+            console.log(e);p
+        });
+    </script>
     <script>
         (function (window, document) {
             var typing = Fluid.plugins.typing;
