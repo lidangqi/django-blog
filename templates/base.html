@@ -185,12 +185,8 @@
     <main>
         <div class="container-fluid nopadding-x">
             <div class="row nomargin-x">
-                {% if post.toc %}
                 <div class="d-none d-lg-block col-lg-2"></div>
-                {% endif %}
-                {% if post.toc %}
                 <div class="col-lg-8 nopadding-x-md">
-                {% endif %}
                     <div class="container nopadding-x-md">
                         <div class="py-5" id="board" style=margin-top:0>
                             <div class="container">
@@ -203,9 +199,7 @@
                             </div>
                         </div>
                     </div>
-                {% if post.toc %}
                 </div>
-                {% endif %}
                 {% block toc %}
                 {% endblock toc %}
             </div>
@@ -279,12 +273,12 @@
             $('body').scrollspy({ target: '#post-toc' });
         });
 
-        var toc_position = $('#tocs').offset().top;
-        var toc_width = $('#tocs').width();
+        var toc_position = $('#toc').offset().top;
+        var toc_width = $('#toc').width();
 
         // 滚动事件，修改目录部分的 position
         $(window).scroll(function () {
-            var toc = $('#tocs');
+            var toc = $('#toc');
             if ($(window).scrollTop() >= toc_position - 12) {
                 toc.css('width', toc_width);
                 toc.css('top', 96);
