@@ -47,8 +47,8 @@ def generate_rich_content(value):
                     '<div class="codehilite" id="code{}">'
                     '<button id="ecodecopy" style="float: right;z-index:10" class="copybtn" '
                     'data-clipboard-action="copy" '
-                    'data-clipboard-target="#code{}"> \
-                    <span id="btn" title="复制"><i class="iconfont icon-copy"></i></span> \
+                         'data-clipboard-target="#code{}" onclick="getCode();"> \
+                    <span title="复制"><i class="iconfont icon-copy"></i></span> \
                     </button>'
                     .format(i, i), content, 1)
     m = re.search(r'<div class="toc">\s*<ul>(.*)</ul>\s*</div> ', md.toc, re.S)
