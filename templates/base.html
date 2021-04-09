@@ -315,23 +315,12 @@
             console.info('Action:', e.action);
             console.info('Text:', e.text);
             console.info('Trigger:', e.trigger);
+            e.trigger.innerHTML = "<i class='iconfont icon-copy'></i><span>复制成功</span>"
+            setTimeout(function () {
+                e.trigger.innerHTML = "<i class='iconfont icon-copy'></i><span>复制</span>"
+            }, 1000)
             e.clearSelection();
-            console.log(e);
         });
-
-        clipboard.on('error', function(e) {
-            console.error('Action:', e.action);
-            console.error('Trigger:', e.trigger);
-            console.log(e);p
-        });
-        function getCode() {
-        let text = document.querySelector("code").innerText;
-        let textarea = document.querySelector("textarea");
-        textarea.value = text; // 修改文本框的内容
-        textarea.select(); // 选中文本
-        let flag = document.execCommand("copy"); // 执行浏览器复制命令
-        flag ? alert('复制成功') : alert('复制失败') //消息提示
-        }
     </script>
     <script>
         (function (window, document) {
