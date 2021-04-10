@@ -12,6 +12,7 @@ from django.utils.functional import cached_property
 
 # Create your models here.
 class Category(models.Model):
+  id = models.AutoField(primary_key=True)
   name = models.CharField(max_length=100)
 
   class Meta:
@@ -22,6 +23,7 @@ class Category(models.Model):
     return self.name
 
 class Tag(models.Model):
+  id = models.AutoField(primary_key=True)
   name = models.CharField(max_length=100)
 
   class Meta:
@@ -57,7 +59,7 @@ def generate_rich_content(value):
 
 class About(models.Model):
   name = models.CharField(max_length=100)
-  about_id = models.AutoField(primary_key=True)
+  id = models.AutoField(primary_key=True)
   avatar_img = models.ImageField(upload_to='images/', blank=True, verbose_name='关于我头像')
   body = MDTextField(verbose_name='正文')
 
@@ -69,6 +71,7 @@ class About(models.Model):
     verbose_name_plural = verbose_name
 
 class Post(models.Model):
+  id = models.AutoField(primary_key=True)
   title = models.CharField(max_length=70, verbose_name='标题')
   body = MDTextField(verbose_name='正文')
   created_time = models.DateTimeField(verbose_name='创建时间', default=timezone.now)
