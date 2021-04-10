@@ -21,13 +21,12 @@ from django.conf.urls.static import static
 from django.conf import settings
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
     path('', include('blog.urls')),
     path('', include('comments.urls')),
-    url(r'mdeditor/', include('mdeditor.urls')),
-
+    path('admin/', admin.site.urls),
     path('all/rss/', AllPostsRssFeed(), name='rss'),
     path('search/', include('haystack.urls')),
+    url(r'mdeditor/', include('mdeditor.urls')),
 ]
 if settings.DEBUG:
     # static files (images, css, javascript, etc.)
