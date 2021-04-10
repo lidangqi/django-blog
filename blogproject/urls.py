@@ -21,12 +21,13 @@ from django.conf.urls.static import static
 from django.conf import settings
 
 urlpatterns = [
+    path('grappelli/', include('grappelli.urls')),  # grappelli URLS
+    path('admin/', admin.site.urls),
+    url(r'mdeditor/', include('mdeditor.urls')),
     path('', include('blog.urls')),
     path('', include('comments.urls')),
-    path('admin/', admin.site.urls),
     path('all/rss/', AllPostsRssFeed(), name='rss'),
-    path('search/', include('haystack.urls')),
-    url(r'mdeditor/', include('mdeditor.urls')),
+    path('search/', include('haystack.urls')), 
 ]
 if settings.DEBUG:
     # static files (images, css, javascript, etc.)

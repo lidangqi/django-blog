@@ -17,6 +17,7 @@ django-mdeditor = "*"
 django-braces = "*"
 pillow = "*"
 pygments = "*"
+django-grappelli = "*"
 
 [dev-packages]
 coverage = "*"
