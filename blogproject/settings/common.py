@@ -111,12 +111,12 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads')
 
 MEDIA_URL = '/media/'
 
-# Simple Ui 相关设置
-# SIMPLEUI_LOGIN_PARTICLES = False
-# SIMPLEUI_ANALYSIS = False
-# SIMPLEUI_STATIC_OFFLINE = True
-# SIMPLEUI_LOADING = False
-# SIMPLEUI_LOGO = 'https://image.3001.net/images/20191031/15724874583730.png'
+Simple Ui 相关设置
+SIMPLEUI_LOGIN_PARTICLES = False
+SIMPLEUI_ANALYSIS = False
+SIMPLEUI_STATIC_OFFLINE = True
+SIMPLEUI_LOADING = False
+SIMPLEUI_LOGO = 'https://image.3001.net/images/20191031/15724874583730.png'
 
 # 后台MarkDown编辑器配置
 X_FRAME_OPTIONS = 'SAMEORIGIN'
@@ -133,7 +133,7 @@ HAYSTACK_CONNECTIONS = {
     "default": {
         "ENGINE": "blog.elasticsearch2_ik_backend.Elasticsearch2IkSearchEngine",
         "URL": "",
-        "INDEX_NAME": "hellodjango_blog_tutorial",
+        "INDEX_NAME": "django_blog",
     },
 }
 HAYSTACK_SEARCH_RESULTS_PER_PAGE = 10
