@@ -17,13 +17,13 @@
 {% endblock subtitle %}
 {% block main %}
 <div class="about-avatar">
-  <img src="{% static 'blog/img/pikaqiu.jpg' %}" class="img-fluid"
+  <img src="{{ about.avatar_img.url }}" class="img-fluid"
     alt="avatar">
 </div>
 <div class="container">
   <div class="row">
     <div class="col-12 col-md-10 m-auto">
-       此处由MD编写
+       <p>{{ about.body_html | safe }}</p>
     </div>
   </div>
 </div>

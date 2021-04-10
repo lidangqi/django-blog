@@ -27,7 +27,7 @@ class IndexView(PaginationMixin, ListView):
   template_name = 'blog/index.html'
   context_object_name = 'post_list'
   paginate_by = 10
-  
+
 # def detail(request, pk):
 #   post = get_object_or_404(Post, pk=pk)
 
@@ -120,10 +120,15 @@ class TagListView(SetHeadlineMixin, ListView):
     template_name = "blog/tags.html"
 
 
-class AboutView(SetHeadlineMixin, ListView):
+class AboutDetailView(DetailView):
     model = About
     headline = "关于"
     template_name = "blog/about.html"
+    context_object_name = 'about'
+
+    def get(self, request, *args, **kwargs):
+      response = super(AboutDetailView, self).get(request, *args, **kwargs)
+      return response
 
 def search(request):
     q = request.GET.get('q')

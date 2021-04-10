@@ -58,17 +58,43 @@ def generate_rich_content(value):
     return {"content": content, "toc": toc}
 
 class About(models.Model):
-  name = models.CharField(max_length=100)
   id = models.AutoField(primary_key=True)
-  avatar_img = models.ImageField(upload_to='images/', blank=True, verbose_name='关于我头像')
+  name = models.CharField(max_length=100)
+  avatar_img = models.ImageField(
+      upload_to='images/', blank=True, verbose_name='关于我头像')
   body = MDTextField(verbose_name='正文')
 
   def __str__(self):
     return self.name
-  
+
   class Meta:
     verbose_name = '关于'
     verbose_name_plural = verbose_name
+    
+  def get_absolute_url(self):
+    return reverse('blog:about', kwargs={'pk': self.pk})
+
+  def save(self, *args, **kwargs):
+
+    md = markdown.Markdown(extensions=[
+        "markdown.extensions.extra",
+        "markdown.extensions.codehilite",
+        "markdown.extensions.admonition",
+        TocExtension(slugify=slugify),
+    ])
+    super().save(*args, **kwargs)
+
+  @property
+  def toc(self):
+    return self.rich_content.get("toc", "")
+
+  @property
+  def body_html(self):
+    return self.rich_content.get("content", "")
+
+  @cached_property
+  def rich_content(self):
+    return generate_rich_content(self.body)
 
 class Post(models.Model):
   id = models.AutoField(primary_key=True)
