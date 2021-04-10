@@ -2,7 +2,7 @@ import markdown
 import re
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
-from .models import Post, Category, Tag
+from .models import Post, Category, Tag, About
 from django.views.generic import ListView, DetailView
 from django.utils.text import slugify
 from markdown.extensions.toc import TocExtension
@@ -118,6 +118,12 @@ class TagListView(SetHeadlineMixin, ListView):
     model = Tag
     headline = "标签"
     template_name = "blog/tags.html"
+
+
+class AboutView(SetHeadlineMixin, ListView):
+    model = About
+    headline = "关于"
+    template_name = "blog/about.html"
 
 def search(request):
     q = request.GET.get('q')

@@ -10,6 +10,7 @@ urlpatterns = [
     path("archives/", views.PostArchivesView.as_view(), name="archives"),
     path("categories/", views.CategoryListView.as_view(), name="categories"),
     path("tags/", views.TagListView.as_view(), name="tags"),
+    path("about/", views.AboutView.as_view(), name="about"),
     # path('archives/<int:year>/<int:month>/', views.archive, name='archive'),
     path('archives/<int:year>/<int:month>/',views.ArchiveView.as_view(), name='archive'),
     # path('categories/<int:pk>/', views.category, name='category'),

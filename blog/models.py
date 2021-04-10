@@ -55,6 +55,19 @@ def generate_rich_content(value):
     toc = m.group(1) if m is not None else ""
     return {"content": content, "toc": toc}
 
+class About(models.Model):
+  name = models.CharField(max_length=100)
+  about_id = models.AutoField(primary_key=True)
+  avatar_img = models.ImageField(upload_to='images/', blank=True, verbose_name='关于我头像')
+  body = MDTextField(verbose_name='正文')
+
+  def __str__(self):
+    return self.name
+  
+  class Meta:
+    verbose_name = '关于'
+    verbose_name_plural = verbose_name
+
 class Post(models.Model):
   title = models.CharField(max_length=70, verbose_name='标题')
   body = MDTextField(verbose_name='正文')
@@ -92,7 +105,7 @@ class Post(models.Model):
         "markdown.extensions.extra",
         "markdown.extensions.codehilite",
         "markdown.extensions.admonition",
-        TocExtension(slugify=slugify,),
+        TocExtension(slugify=slugify),
     ])
     self.excerpt = strip_tags(md.convert(self.body))[:54]
 

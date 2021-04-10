@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block subtitle %}
+<div class="banner" id="banner" parallax=true style="background: url('{% static 'blog/img/category.jpg' %}') no-repeat center center;
+           background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="page-header text-center fade-in-up">
+        <span class="h2" id="subtitle" title="关于"></span>
+      </div>
+      <div class="scroll-down-bar">
+        <i class="iconfont icon-arrowdown"></i>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock subtitle %}
+{% block main %}
+<div class="about-avatar">
+  <img src="{% static 'blog/img/pikaqiu.jpg' %}" class="img-fluid"
+    alt="avatar">
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-12 col-md-10 m-auto">
+       此处由MD编写
+    </div>
+  </div>
+</div>
+{% endblock main %}
