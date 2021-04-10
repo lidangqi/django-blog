@@ -111,7 +111,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads')
 
 MEDIA_URL = '/media/'
 
-Simple Ui 相关设置
+# Simple Ui 相关设置
 SIMPLEUI_LOGIN_PARTICLES = False
 SIMPLEUI_ANALYSIS = False
 SIMPLEUI_STATIC_OFFLINE = True
