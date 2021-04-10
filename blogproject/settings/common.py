@@ -23,7 +23,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 INSTALLED_APPS = [
     'simpleui',
-    'mdeditor',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -35,6 +34,7 @@ INSTALLED_APPS = [
     'pure_pagination',
     'blog.apps.BlogConfig',
     'comments.apps.CommentsConfig',
+    'mdeditor',
 ]
 
 MIDDLEWARE = [
