@@ -23,6 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 INSTALLED_APPS = [
     'simpleui',
+    'mdeditor',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -31,7 +32,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     #我的应用
     'haystack',
-    'mdeditor',
     'pure_pagination',
     'blog.apps.BlogConfig',
     'comments.apps.CommentsConfig',
