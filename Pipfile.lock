@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "e228999a1d61ba3b995f3b0f5fef7eb8a7b8a7d9640cf36ab94e3945b1ac7dc1"
+            "sha256": "a59abac05f3e2f767bc149aefdc6555f6b63c09fc8f56e21f9b5d3ca2cf4f0e7"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -75,6 +75,13 @@
             ],
             "index": "pypi",
             "version": "==2021.4.1"
+        },
+        "django-suit": {
+            "file": "https://github.com/darklow/django-suit/tarball/v2",
+            "hashes": [
+                "sha256:ad200bd6cb80f30cdc7877bbceadd36ac7e1d6019aea8a3fdc7af90927b9a841"
+            ],
+            "version": "==2.0a1"
         },
         "elasticsearch": {
             "hashes": [

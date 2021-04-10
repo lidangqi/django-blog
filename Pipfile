@@ -4,7 +4,6 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-django = "*"
 mysqlclient = "*"
 markdown = "*"
 gunicorn = "*"
@@ -12,12 +11,14 @@ django-pure-pagination = "*"
 django-haystack = "*"
 elasticsearch = "==2.4.1"
 urllib3 = "*"
-django-simpleui = "*"
 django-mdeditor = "*"
 django-braces = "*"
 pillow = "*"
 pygments = "*"
 django-grappelli = "*"
+django = "*"
+django-suit = {file = "https://github.com/darklow/django-suit/tarball/v2"}
+django-simpleui = "*"
 
 [dev-packages]
 coverage = "*"

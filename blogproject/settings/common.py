@@ -22,8 +22,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent.parent
 # Application definition
 
 INSTALLED_APPS = [
-    # 'simpleui',
-    'grappelli',
+    'simpleui',
+    # 'suit',
+    # 'grappelli',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -49,6 +50,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'blogproject.urls'
+
 
 TEMPLATES = [
     {
@@ -134,7 +136,7 @@ HAYSTACK_CONNECTIONS = {
     "default": {
         "ENGINE": "blog.elasticsearch2_ik_backend.Elasticsearch2IkSearchEngine",
         "URL": "",
-        "INDEX_NAME": "django_blog",
+        "INDEX_NAME": "django_blog_local",
     },
 }
 HAYSTACK_SEARCH_RESULTS_PER_PAGE = 10
