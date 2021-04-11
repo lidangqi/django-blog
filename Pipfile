@@ -15,10 +15,10 @@ django-mdeditor = "*"
 django-braces = "*"
 pillow = "*"
 pygments = "*"
-django-grappelli = "*"
 django = "*"
-django-suit = {file = "https://github.com/darklow/django-suit/tarball/v2"}
-django-simpleui = "*"
+bootstrap-admin = "*"
+django-jazzmin = "*"
+django-baton = "*"
 
 [dev-packages]
 coverage = "*"
