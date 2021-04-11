@@ -7,7 +7,6 @@
 *.egg
 *.egg-info
 .ropeproject
-dist
 build
 eggs
 parts
