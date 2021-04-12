@@ -5,7 +5,7 @@
 
 ## 特别感谢
 - HelloDjango-blog-tutorial：https://github.com/HelloGitHub-Team/HelloDjango-blog-tutorial
-- hexo-theme-fluid]：https://github.com/fluid-dev/hexo-theme-fluid
+- hexo-theme-fluid：https://github.com/fluid-dev/hexo-theme-fluid
 
 - 各个组件的开发者们
     - Docker
