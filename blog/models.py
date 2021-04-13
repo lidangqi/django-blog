@@ -47,7 +47,7 @@ def generate_rich_content(value):
     for i in range(n):
         content = re.sub(r'<div class="codehilite">',
                     '<div class="codehilite" id="code{}">'
-                    '<button id="ecodecopy" style="float: right;z-index:10" class="copybtn" '
+                    '< button id="ecodecopy" style="position:absolute;right:11%;" class="copybtn" '
                     'data-clipboard-action="copy" '
                     'data-clipboard-target="#code{}"> \
                     <i class="iconfont icon-copy"></i><span>复制</span> \
