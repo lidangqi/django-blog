@@ -40,12 +40,17 @@
   <header class="entry-header">
     <h1 class="entry-title">{{ post.title }}</h1>
     <div class="entry-meta">
-      <span class="post-category"><a href="#">{{ post.category.name }}</a></span>
+      <span class="post-category"><a href="#"><i class="iconfont icon-tags"></i>
+      {{ post.category.name }}</a></span>
       <span class="post-date"><a href="#"><time class="entry-date"
-            datetime="{{ post.created_time }}">{{ post.created_time }}</time></a></span>
-      <span class="post-author"><a href="#">{{ post.author }}</a></span>
-      <span class="comments-link"><a href="#comment-area">{{ post.comment_set.count }} 评论</a></span>
-      <span class="views-count"><a href="#">{{ post.views }} 阅读</a></span>
+            datetime="{{ post.created_time }}"><i class="iconfont icon-date"></i>
+            {{ post.created_time }}</time></a></span>
+      <span class="post-author"><a href="#"><i class="iconfont icon-user"></i>
+      {{ post.author }}</a></span>
+      <span class="comments-link"><a href="#comment-area"><i class="iconfont icon-chart"></i>
+                                                  {{ post.comment_set.count }} 评论</a></span>
+      <span class="views-count"><a href="#"><i class="iconfont icon-clock-fill"></i>
+                                                {{ post.views }} 阅读</a></span>
     </div>
   </header>
   <div class="entry-content clearfix" >
