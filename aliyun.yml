@@ -17,14 +17,6 @@ services:
       - .envs/.production
     ports:
       - "8001:8000"
-    deploy:
-     resources:
-        limits:
-           cpus: '0.5'
-           memory: 300M
-        reservations:
-           cpus: '0.5'
-           memory: 200M
     command: /start.sh
     depends_on:
       - elasticsearch_local
@@ -39,14 +31,6 @@ services:
       - esdata_local:/usr/share/elasticsearch/data
     ports:
       - "9200:9200"
-    deploy:
-     resources:
-        limits:
-           cpus: '0.5'
-           memory: 700M
-        reservations:
-           cpus: '0.5'
-           memory: 200M
     environment:
       - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
     ulimits:
