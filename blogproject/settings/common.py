@@ -169,9 +169,6 @@ BATON = {
 CORS_ALLOW_CREDENTIALS = True
 CORS_ALLOW_ALL_ORIGINS = True
 
-MIDDLEWARE = [
-    'corsheaders.middleware.CorsMiddleware',
-]
 CORS_ALLOW_METHODS = (
     'DELETE',
     'GET',
