@@ -19,6 +19,7 @@ django = "*"
 bootstrap-admin = "*"
 django-jazzmin = "*"
 django-baton = "*"
+django-oss-storage = "*"
 
 [dev-packages]
 coverage = "*"
