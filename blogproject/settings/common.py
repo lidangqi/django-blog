@@ -109,7 +109,7 @@ USE_TZ = True
 
 STATIC_URL = 'https://django-blog2021.oss-cn-shenzhen.aliyuncs.com/static/'
 MEDIA_URL = '/uploads/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_ROOT = 'static'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads')
 
 # 后台MarkDown编辑器配置
