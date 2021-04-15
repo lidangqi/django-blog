@@ -32,6 +32,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     #我的应用
+    'corsheaders',
     'django_oss_storage',
     'haystack',
     'pure_pagination',
@@ -162,3 +163,35 @@ BATON = {
         'url': '/search/',
     },
 }
+
+# 跨域增加忽略
+CORS_ALLOW_CREDENTIALS = True
+CORS_ALLOW_ALL_ORIGINS = True
+
+MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
+]
+CORS_ALLOW_METHODS = (
+    'DELETE',
+    'GET',
+    'OPTIONS',
+    'PATCH',
+    'POST',
+    'PUT',
+    'VIEW',
+)
+
+CORS_ALLOW_HEADERS = (
+    'XMLHttpRequest',
+    'X_FILENAME',
+    'accept-encoding',
+    'authorization',
+    'content-type',
+    'dnt',
+    'origin',
+    'user-agent',
+    'x-csrftoken',
+    'x-requested-with',
+    'Pragma',
+    'Access-Control-Allow-Origin',
+)
