@@ -21,8 +21,6 @@ DATABASES = {
     }
 }
 
-STATIC_URL = '/static/'
-MEDIA_URL = '/uploads/'
 # 阿里云 CDN 存储静态资源文件 & 阿里云存储上传的图片/文件
 # STATICFILES_STORAGE = 'django_oss_storage.backends.OssStaticStorage'
 
