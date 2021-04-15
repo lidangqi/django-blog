@@ -166,15 +166,6 @@ BATON = {
 }
 
 # 跨域增加忽略
-CORS_ALLOWED_ORIGINS = [
-    "https://blog.lidangqi.com",
-    "https://django-blog2021.oss-cn-shenzhen.aliyuncs.com",
-]
-
-CORS_ORIGIN_WHITELIST = (
-    '*'
-)
-
 CORS_ALLOW_METHODS = (
     'DELETE',
     'GET',
