@@ -24,7 +24,7 @@ DATABASES = {
 # 阿里云 CDN 存储静态资源文件 & 阿里云存储上传的图片/文件
 # STATICFILES_STORAGE = 'django_oss_storage.backends.OssStaticStorage'
 
-# DEFAULT_FILE_STORAGE = 'django_oss_storage.backends.OssMediaStorage'
+DEFAULT_FILE_STORAGE = 'django_oss_storage.backends.OssMediaStorage'
 
 # AliCloud access key ID
 OSS_ACCESS_KEY_ID = os.environ.get('OSS_ACCESS_KEY_ID')
