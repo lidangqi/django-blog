@@ -25,8 +25,6 @@ DATABASES = {
     }
 }
 
-STATIC_URL = 'https://django-blog2021.oss-cn-shenzhen.aliyuncs.com/static/'
-MEDIA_URL = 'https://django-blog2021.oss-cn-shenzhen.aliyuncs.com/media/'
 # 阿里云 CDN 存储静态资源文件 & 阿里云存储上传的图片/文件
 # STATICFILES_STORAGE = 'django_oss_storage.backends.OssStaticStorage'
 
