@@ -169,6 +169,11 @@ BATON = {
 CORS_ALLOW_CREDENTIALS = True
 CORS_ALLOW_ALL_ORIGINS = True
 
+CORS_ALLOWED_ORIGINS = [
+    "https://blog.lidangqi.com",
+    "https://django-blog2021.oss-cn-shenzhen.aliyuncs.com",
+]
+
 CORS_ALLOW_METHODS = (
     'DELETE',
     'GET',
