@@ -1,4 +1,5 @@
 from django.urls import path
+from django.conf.urls import url, include
 from django.contrib.sitemaps.views import sitemap
 from blog.sitemaps import PostSitemap
 from . import views
@@ -23,5 +24,6 @@ urlpatterns = [
     # path('tags/<int:pk>/', views.tag, name='tag'),
     path('tags/<int:pk>/', views.TagView.as_view(), name='tag'),
     # path('search/', views.search, name='search'),
-    path('sitemap.xml', sitemap, {'sitemaps': sitemaps}),
+    url(r'^sitemap\.xml', sitemap, {'sitemaps': sitemaps}),
+    url(r'^robots\.txt', include('robots.urls')),
 ]

@@ -40,9 +40,12 @@ INSTALLED_APPS = [
     'comments.apps.CommentsConfig',
     'mdeditor',
     'baton.autodiscover',
+    'robots',
 ]
 
 SITE_ID = 1
+
+DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -164,3 +167,7 @@ BATON = {
         'url': '/search/',
     },
 }
+
+ROBOTS_SITEMAP_URLS = [
+    'http://blog.lidangqi.com/sitemap.xml',
+]
