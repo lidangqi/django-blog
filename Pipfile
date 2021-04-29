@@ -4,7 +4,6 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-django = "*"
 mysqlclient = "*"
 markdown = "*"
 gunicorn = "*"
@@ -12,8 +11,16 @@ django-pure-pagination = "*"
 django-haystack = "*"
 elasticsearch = "==2.4.1"
 urllib3 = "*"
-django-simpleui = "*"
 django-mdeditor = "*"
+django-braces = "*"
+pillow = "*"
+pygments = "*"
+django = "*"
+bootstrap-admin = "*"
+django-jazzmin = "*"
+django-baton = "*"
+django-oss-storage = "*"
+django-robots = "*"
 
 [dev-packages]
 coverage = "*"

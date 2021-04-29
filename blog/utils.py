@@ -1,7 +1,6 @@
 from django.utils.html import strip_tags
 from haystack.utils import Highlighter as HaystackHighlighter
 
-
 class Highlighter(HaystackHighlighter):
     """
     自定义关键词高亮器，不截断过短的文本（例如文章标题）

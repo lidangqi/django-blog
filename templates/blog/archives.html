@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block subtitle %}
+<div class="banner" id="banner" parallax=true
+  style="background: url('{% static 'blog/img/archives.jpg' %}') no-repeat center center;
+           background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="page-header text-center fade-in-up">
+        <span class="h2" id="subtitle" title="归档"></span>
+      </div>
+      <div class="scroll-down-bar">
+        <i class="iconfont icon-arrowdown"></i>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock subtitle %}
+{% block main %}
+<div class="list-group">
+{% regroup post_list by created_time.year as year_post_group %}
+<p class="h4">共计 {{ post_list|length }} 篇文章</p>
+<hr>
+{% for year in year_post_group %}
+<p class="h5">{{ year.grouper }}</p>
+{% regroup year.list by created_time.month as month_post_group %}
+  {% for month in month_post_group %}
+      {% for post in month.list %}
+          <a href="{{ post.get_absolute_url }}" class="list-group-item list-group-item-action">
+            <span class="archive-post-title">{{ post.title }}</span>
+            <time style="float: right;">{{ post.created_time }}</time>
+          </a>
+      {% endfor %}
+  {% endfor %}
+{% endfor %}
+</div>
+{% endblock main %}

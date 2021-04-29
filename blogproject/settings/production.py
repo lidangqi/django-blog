@@ -25,4 +25,23 @@ DATABASES = {
     }
 }
 
+# 阿里云 CDN 存储静态资源文件 & 阿里云存储上传的图片/文件
+# STATICFILES_STORAGE = 'django_oss_storage.backends.OssStaticStorage'
+
+# 阿里云 CDN 存储静态资源文件 & 阿里云存储上传的图片/文件
+# STATICFILES_STORAGE = 'django_oss_storage.backends.OssStaticStorage'
+
+DEFAULT_FILE_STORAGE = 'django_oss_storage.backends.OssMediaStorage'
+
+# AliCloud access key ID
+OSS_ACCESS_KEY_ID = os.environ.get('OSS_ACCESS_KEY_ID', '')
+# AliCloud access key secret
+OSS_ACCESS_KEY_SECRET = os.environ.get('OSS_ACCESS_KEY_SECRET', '')
+# The name of the bucket to store files in
+OSS_BUCKET_NAME = 'django-blog2021'
+
+# The URL of AliCloud OSS endpoint
+# Refer https://www.alibabacloud.com/help/zh/doc-detail/31837.htm for OSS Region & Endpoint
+OSS_ENDPOINT = 'oss-cn-shenzhen.aliyuncs.com'
+
 HAYSTACK_CONNECTIONS['default']['URL'] = 'http://django-blog-elasticsearch:9200/'

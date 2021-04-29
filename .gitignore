@@ -7,7 +7,6 @@
 *.egg
 *.egg-info
 .ropeproject
-dist
 build
 eggs
 parts
@@ -17,10 +16,8 @@ sdist
 dump.rdb
 develop-eggs
 .installed.cfg
-lib
-lib64
-media
-static
+
+
 
 # Installer logs
 pip-log.txt
