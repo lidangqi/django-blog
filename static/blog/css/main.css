@@ -1041,7 +1041,6 @@ figure.highlight td.gutter pre span.line {
   border: 0;
   background-color: transparent;
   font-size: 0.9rem;
-  color: #4285f4;
   padding: 0.5rem 0.75rem;
   line-height: 1.25;
   border-radius: 0.125rem;
@@ -1050,6 +1049,7 @@ figure.highlight td.gutter pre span.line {
 .pagination a:hover,
 .pagination .current {
   background-color: var(--link-hover-bg-color);
+  color: #4285f4;
 }
 .modal-dialog .modal-content {
   background-color: var(--board-bg-color);
