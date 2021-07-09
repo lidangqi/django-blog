@@ -56,11 +56,11 @@
 {% empty %}
 <div class="no-post">暂时还没有发布的文章！</div>
 {% endfor %}
-<div class="pagination">
+<nav aria-label="navigation">
     {% if is_paginated %}
     {{ page_obj.render }}
     {% endif %}
-</div>
+</nav>
 {% endblock main %}
 
 {% block toc %}
