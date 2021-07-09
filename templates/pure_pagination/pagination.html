@@ -1,5 +1,6 @@
 <div class="text-center pagination" style="width: 100%">
   <ul>
+    <nav aria-label="navigation">
     {% if page_obj.has_previous %}
       <li><a href="?{{ page_obj.previous_page_number.querystring }}"
              class="prev">&lsaquo;&lsaquo; </a></li>
@@ -23,5 +24,6 @@
     {% else %}
       <li><span class="disabled next"> &rsaquo;&rsaquo;</span></li>
     {% endif %}
+    </nav>
   </ul>
 </div>
