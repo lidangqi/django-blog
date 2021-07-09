@@ -2,7 +2,7 @@
   {% if page_obj.has_previous %}
   <a href="?{{ page_obj.previous_page_number.querystring }}" class="extend prev">&lsaquo;&lsaquo; </a>
   {% else %}
-  <span class="disabled prev">&lsaquo;&lsaquo; </span>
+  <span class="extend prev"></span>
   {% endif %}
   {% for page in page_obj.pages %}
   {% if page %}
@@ -18,6 +18,6 @@
   {% if page_obj.has_next %}
   <a href="?{{ page_obj.next_page_number.querystring }}" class="extend next"> &rsaquo;&rsaquo;</a>
   {% else %}
-  <span class="disabled next"> &rsaquo;&rsaquo;</span>
+  <span class="extend next"></span>
   {% endif %}
 </span>
