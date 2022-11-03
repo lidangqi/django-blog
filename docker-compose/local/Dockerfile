@@ -1,4 +1,4 @@
-FROM python:3.9-alpine
+FROM python:3.12.0a1-alpine3.16
 
 ENV PYTHONUNBUFFERED 1
 
@@ -9,7 +9,7 @@ RUN apk update \
   && apk add --no-cache mariadb-dev
 WORKDIR /app
 
-RUN pip install pipenv -i https://pypi.douban.com/simple
+RUN pip install pipenv -i https://pypi.mirrors.ustc.edu.cn/simple/
 
 COPY Pipfile /app/Pipfile
 COPY Pipfile.lock /app/Pipfile.lock
