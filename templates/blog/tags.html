@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block subtitle %}
+<div class="banner" id="banner" parallax=true style="background: url('{% static 'blog/img/tags.jpg' %}') no-repeat center center;
+           background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="page-header text-center fade-in-up">
+        <span class="h2" id="subtitle" title="标签云"></span>
+      </div>
+      <div class="scroll-down-bar">
+        <i class="iconfont icon-arrowdown"></i>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock subtitle %}
+{% block main %}
+<div class="text-center tagcloud">
+{% for tag in tag_list %}
+  <a href="{% url 'blog:tag' tag.pk %}" style="font-size: 15px; color: #bbe">{{ tag.name }}</a>
+{% endfor %}
+</div>
+{% endblock main %}

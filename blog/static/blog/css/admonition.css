@@ -1,0 +1,82 @@
+.admonition {
+  padding: 7.5px 30px 7.5px 0;
+  margin-top: 7.5px;
+  margin-bottom: 15px;
+  border-radius: 3px;
+}
+
+.admonition p:not(:first-child) {
+  margin: 0.5em 1em 0.5em 1em;
+  font-size: 85%;
+}
+
+.admonition .admonition-title {
+  margin-top: 0;
+  font-weight: 600;
+  padding: 0.1em 0 0.1em 0.5em;
+}
+
+.admonition .admonition-title::before {
+  content: "";
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  vertical-align: top;
+  margin-top: 4px;
+  margin-right: 2px;
+}
+
+.admonition.danger,
+.admonition.error {
+  border-left: 0.35rem solid;
+  color: #db5757;
+  background-color: #f8dddd;
+}
+
+.admonition.danger .admonition-title::before,
+.admonition.error .admonition-title::before {
+  background: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCI+PHBhdGggZmlsbD0ibm9uZSIgZD0iTTAgMGgyNHYyNEgweiIvPjxwYXRoIGZpbGw9IiNkYjU3NTciIGQ9Ik0xMiAyMkM2LjQ3NyAyMiAyIDE3LjUyMyAyIDEyUzYuNDc3IDIgMTIgMnMxMCA0LjQ3NyAxMCAxMC00LjQ3NyAxMC0xMCAxMHptLTEtN3YyaDJ2LTJoLTJ6bTAtOHY2aDJWN2gtMnoiLz48L3N2Zz4=") no-repeat;
+  background-size: contain;
+}
+
+.admonition.warning,
+.admonition.caution,
+.admonition.attention {
+  border-left: 0.35rem solid;
+  color: #f0a742;
+  background-color: #fcedd9;
+}
+
+.admonition.warning .admonition-title::before,
+.admonition.caution .admonition-title::before,
+.admonition.attention .admonition-title::before {
+  color: #f0a742;
+  background: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCI+PHBhdGggZmlsbD0ibm9uZSIgZD0iTTAgMGgyNHYyNEgweiIvPjxwYXRoIGZpbGw9IiNmMGE3NDIiIGQ9Ik0xMi44NjYgM2w5LjUyNiAxNi41YTEgMSAwIDAxLS44NjYgMS41SDIuNDc0YTEgMSAwIDAxLS44NjYtMS41TDExLjEzNCAzYTEgMSAwIDAxMS43MzIgMHpNMTEgMTZ2Mmgydi0yaC0yem0wLTd2NWgyVjloLTJ6Ii8+PC9zdmc+") no-repeat;
+  background-size: contain;
+}
+
+.admonition.important,
+.admonition.note {
+  border-left: 0.35rem solid;
+  color: #5eba5e;
+  background-color: #dff1df;
+}
+
+.admonition.important .admonition-title::before,
+.admonition.note .admonition-title::before {
+  background: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCI+PHBhdGggZmlsbD0ibm9uZSIgZD0iTTAgMGgyNHYyNEgweiIvPjxwYXRoIGZpbGw9IiM1ZWJhNWUiIGQ9Ik0xMiAyMkM2LjQ3NyAyMiAyIDE3LjUyMyAyIDEyUzYuNDc3IDIgMTIgMnMxMCA0LjQ3NyAxMCAxMC00LjQ3NyAxMC0xMCAxMHptLTEtMTF2Nmgydi02aC0yem0wLTR2MmgyVjdoLTJ6Ii8+PC9zdmc+") no-repeat;
+  background-size: contain;
+}
+
+.admonition.hint,
+.admonition.tip {
+  border-left: 0.35rem solid;
+  color: #3986ac;
+  background-color: #d7e7ee;
+}
+
+.admonition.hint .admonition-title::before,
+.admonition.tip .admonition-title::before {
+  background: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCI+PHBhdGggZmlsbD0ibm9uZSIgZD0iTTAgMGgyNHYyNEgweiIvPjxwYXRoIGZpbGw9IiMzOTg2YWMiIGQ9Ik05Ljk3MyAxOEgxMXYtNWgydjVoMS4wMjdjLjEzMi0xLjIwMi43NDUtMi4xOTQgMS43NC0zLjI3Ny4xMTMtLjEyMi44MzItLjg2Ny45MTctLjk3M2E2IDYgMCAxMC05LjM3LS4wMDJjLjA4Ni4xMDcuODA3Ljg1My45MTguOTc0Ljk5NiAxLjA4NCAxLjYwOSAyLjA3NiAxLjc0MSAzLjI3OHpNMTAgMjB2MWg0di0xaC00em0tNC4yNDYtNWE4IDggMCAxMTEyLjQ5LjAwMkMxNy42MjQgMTUuNzc0IDE2IDE3IDE2IDE4LjVWMjFhMiAyIDAgMDEtMiAyaC00YTIgMiAwIDAxLTItMnYtMi41QzggMTcgNi4zNzUgMTUuNzc0IDUuNzU0IDE1eiIvPjwvc3ZnPg==") no-repeat;
+  background-size: contain;
+}

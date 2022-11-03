@@ -15,27 +15,37 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # Application definition
 
 INSTALLED_APPS = [
-    'simpleui',
+    # 'bootstrap_admin',
+    # 'jazzmin',
+    'baton',
     'django.contrib.admin',
     'django.contrib.auth',
+    'django.contrib.sites',
+    'django.contrib.sitemaps',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
     #我的应用
+    'django_oss_storage',
     'haystack',
-    'mdeditor',
     'pure_pagination',
     'blog.apps.BlogConfig',
     'comments.apps.CommentsConfig',
+    'mdeditor',
+    'baton.autodiscover',
+    'robots',
 ]
+
+SITE_ID = 1
+
+DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -103,14 +113,12 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
-STATIC_URL = '/static/'
-
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-
+STATIC_URL = 'https://django-blog2021.oss-cn-shenzhen.aliyuncs.com/static/'
+MEDIA_URL = '/uploads/'
+STATIC_ROOT = 'static'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads')
 
-MEDIA_URL = '/media/'
-
+# 后台MarkDown编辑器配置
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 
 # 分页设置
@@ -125,7 +133,7 @@ HAYSTACK_CONNECTIONS = {
     "default": {
         "ENGINE": "blog.elasticsearch2_ik_backend.Elasticsearch2IkSearchEngine",
         "URL": "",
-        "INDEX_NAME": "hellodjango_blog_tutorial",
+        "INDEX_NAME": "django_blog_local",
     },
 }
 HAYSTACK_SEARCH_RESULTS_PER_PAGE = 10
@@ -135,3 +143,31 @@ if enable in {"true", "True", "yes"}:
     HAYSTACK_SIGNAL_PROCESSOR = "haystack.signals.RealtimeSignalProcessor"
 
 HAYSTACK_CUSTOM_HIGHLIGHTER = "blog.utils.Highlighter"
+
+BATON = {
+    'SITE_HEADER': '皮卡丘',
+    'SITE_TITLE': '皮卡丘',
+    'INDEX_TITLE': '博客管理后台',
+    'SUPPORT_HREF': 'https://github.com/otto-torino/django-baton/issues',
+    'COPYRIGHT': 'copyright © 2020 <a href="https://www.otto.to.it">Otto srl</a>',  # noqa
+    'POWERED_BY': '<a href="https://www.otto.to.it">Otto srl</a>',
+    'CONFIRM_UNSAVED_CHANGES': True,
+    'SHOW_MULTIPART_UPLOADING': True,
+    'ENABLE_IMAGES_PREVIEW': True,
+    'CHANGELIST_FILTERS_IN_MODAL': True,
+    'CHANGELIST_FILTERS_ALWAYS_OPEN': False,
+    'CHANGELIST_FILTERS_FORM': True,
+    'MENU_ALWAYS_COLLAPSED': False,
+    'MENU_TITLE': 'Menu',
+    'MESSAGES_TOASTS': False,
+    'GRAVATAR_DEFAULT_IMG': 'retro',
+    'LOGIN_SPLASH': '/static/blog/img/banner.jpg',
+    'SEARCH_FIELD': {
+        'label': 'Search contents...',
+        'url': '/search/',
+    },
+}
+
+ROBOTS_SITEMAP_URLS = [
+    'http://blog.lidangqi.com/sitemap.xml',
+]

@@ -4,6 +4,7 @@ from django.utils import timezone
 # Create your models here.
 
 class Comment(models.Model):
+    id = models.AutoField(primary_key=True)
     name = models.CharField(verbose_name='名字', max_length=50)
     email = models.EmailField(verbose_name='邮箱')
     url = models.URLField(verbose_name='网址', blank=True)

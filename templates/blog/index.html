@@ -1,36 +1,66 @@
 {% extends 'base.html' %}
+{% load static %}
+{% block subtitle %}
+<div class="banner" id="banner" parallax=true style="background: url('{% static 'blog/img/banner.jpg' %}') no-repeat center center;
+           background-size: cover;">
+    <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+            <div class="page-header text-center fade-in-up">
+                <span class="h2" id="subtitle" title="不断学习是成功的最基本要素。"></span>
+            </div>
+            <div class="scroll-down-bar">
+                <i class="iconfont icon-arrowdown"></i>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock subtitle %}
 {% block main %}
-    {% for post in post_list %}
-        <article class="post post-{{ post.pk }}">
-            <header class="entry-header">
-                <h1 class="entry-title">
-                    <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
-                </h1>
-                <div class="entry-meta">
-                    <span class="post-category"><a href="#">{{ post.category.name }}</a></span>
-                    <span class="post-date"><a href="#"><time class="entry-date"
-                            datetime="{{ post.created_time }}">{{ post.created_time }}</time></a></span>
-                    <span class="post-author"><a href="#">{{ post.author }}</a></span>
-                    <span class="comments-link"><a href="{{ post.get_absolute_url }}#comment-area">{{ post.comment_set.count }} 评论</a></span>
-                    <span class="views-count"><a href="#">{{ post.views }} 阅读</a></span>
+{% for post in post_list %}
+    <div class="row mx-auto index-card">
+        <div class="col-12 col-md-4 m-auto index-img">
+            <a href="{{ post.get_absolute_url }}"
+                target="_self">
+                <img src="{{ post.index_img.url }}"
+                    srcset="{% static 'blog/img/loading.gif' %}" 
+                    lazyload alt="">
+            </a>
+        </div>
+        <article class="col-12 col-md-8 mx-auto index-info">
+            <h1 class="index-header">
+                <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+            </h1>
+            <p class="index-excerpt">
+                <a href="{{ post.get_absolute_url }}">{{ post.excerpt }}...</a>
+            </p>
+            <div class="index-btm post-metas">
+                <div class="post-meta mr-3">
+                    <i class="iconfont icon-date"></i>
+                    <time datetime="{{ post.created_time }}" pubdate>
+                        {{ post.created_time }}
+                    </time>
                 </div>
-            </header>
-            <div class="entry-content clearfix">
-                <p>{{ post.excerpt }}...</p>
-                <div class="read-more cl-effect-14">
-                    <a href="{{ post.get_absolute_url }}" class="more-link">继续阅读 <span class="meta-nav">→</span></a>
+                <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    <a href="{% url 'blog:category' post.category.pk %}">{{ post.category.name }}</a>
+                </div>
+                <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                      {% for tag in  post.tags.all %}
+                        <a href="{% url 'blog:tag' tag.pk %}">{{ tag }}</a>
+                      {% endfor %}
                 </div>
             </div>
         </article>
-    {% empty %}
-        <div class="no-post">暂时还没有发布的文章！</div>
-    {% endfor %}
-
-    <div class="pagination">
-        {% if is_paginated %}
-            {{ page_obj.render }}
-        {% endif %}
     </div>
+{% empty %}
+<div class="no-post">暂时还没有发布的文章！</div>
+{% endfor %}
+<nav aria-label="navigation">
+    {% if is_paginated %}
+    {{ page_obj.render }}
+    {% endif %}
+</nav>
 {% endblock main %}
 
 {% block toc %}

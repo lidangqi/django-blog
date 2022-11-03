@@ -14,7 +14,7 @@ class HighlighterTestCase(TestCase):
         self.assertEqual(highlighter.highlight(document), expected)
 
         highlighter = Highlighter("标题")
-        document = "这是一个长度超过 200 的标题，应该被截断。" + "HelloDjangoTutorial" * 200
+        document = "这是一个长度超过 200 的标题，应该被截断。" + "DjangoBlog" * 200
         self.assertTrue(
             highlighter.highlight(document).startswith(
                 '...<span class="highlighted">标题</span>，应该被截断。'
