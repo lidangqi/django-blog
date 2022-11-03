@@ -44,4 +44,13 @@ OSS_BUCKET_NAME = 'django-blog2021'
 # Refer https://www.alibabacloud.com/help/zh/doc-detail/31837.htm for OSS Region & Endpoint
 OSS_ENDPOINT = 'oss-cn-shenzhen.aliyuncs.com'
 
-HAYSTACK_CONNECTIONS['default']['URL'] = 'http://django-blog-elasticsearch:9200/'
+HAYSTACK_CONNECTIONS = {
+    'default': {
+        'ENGINE': 'haystack.backends.solr_backend.SolrEngine',
+        'URL': 'http://elasticsearch_local:9200/',
+        'TIMEOUT': 60 * 5,
+        'INCLUDE_SPELLING': True,
+        'BATCH_SIZE': 100,
+        'EXCLUDED_INDEXES': ['thirdpartyapp.search_indexes.BarIndex'],
+    }
+}

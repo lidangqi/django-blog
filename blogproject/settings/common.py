@@ -145,8 +145,8 @@ if enable in {"true", "True", "yes"}:
 HAYSTACK_CUSTOM_HIGHLIGHTER = "blog.utils.Highlighter"
 
 BATON = {
-    'SITE_HEADER': '皮卡丘',
-    'SITE_TITLE': '皮卡丘',
+    'SITE_HEADER': 'Allen-blog',
+    'SITE_TITLE': 'Allen-blog',
     'INDEX_TITLE': '博客管理后台',
     'SUPPORT_HREF': 'https://github.com/otto-torino/django-baton/issues',
     'COPYRIGHT': 'copyright © 2020 <a href="https://www.otto.to.it">Otto srl</a>',  # noqa

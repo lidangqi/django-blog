@@ -15,7 +15,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'blog',
         'USER': 'root',
-        'PASSWORD': os.environ.get('DJANGO_MYSQLPASS_KEY', 'password'),
+        'PASSWORD': os.environ.get('DJANGO_MYSQLPASS_KEY', 'password1!'),
         'HOST': os.environ.get('DJANGO_MYSQLIP_KEY', '127.0.0.1'),
         'PORT': '3306',
     }
@@ -38,4 +38,13 @@ OSS_BUCKET_NAME = 'django-blog2021'
 OSS_ENDPOINT = 'oss-cn-shenzhen.aliyuncs.com'
 
 # 搜索设置
-HAYSTACK_CONNECTIONS['default']['URL'] = 'http://elasticsearch_local:9200/'
+HAYSTACK_CONNECTIONS = {
+    'default': {
+        'ENGINE': 'haystack.backends.solr_backend.SolrEngine',
+        'URL': 'http://elasticsearch_local:9200/',
+        'TIMEOUT': 60 * 5,
+        'INCLUDE_SPELLING': True,
+        'BATCH_SIZE': 100,
+        'EXCLUDED_INDEXES': ['thirdpartyapp.search_indexes.BarIndex'],
+    }
+}
