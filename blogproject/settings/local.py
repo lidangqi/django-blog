@@ -30,9 +30,11 @@ DATABASES = {
 DEFAULT_FILE_STORAGE = 'django_oss_storage.backends.OssMediaStorage'
 
 # AliCloud access key ID
-OSS_ACCESS_KEY_ID = os.environ.get('OSS_ACCESS_KEY_ID')
+OSS_ACCESS_KEY_ID = os.environ.get(
+    'OSS_ACCESS_KEY_ID', 'LTAI5tCofhS7cXX9HJDXwWqa')
 # AliCloud access key secret
-OSS_ACCESS_KEY_SECRET = os.environ.get('OSS_ACCESS_KEY_SECRET')
+OSS_ACCESS_KEY_SECRET = os.environ.get(
+    'OSS_ACCESS_KEY_SECRET', 'ZbrQI03hn4IlnB53fqkah7c2zc9DvR')
 # The name of the bucket to store files in
 OSS_BUCKET_NAME = 'django-blog2021'
 

@@ -1,23 +1,42 @@
 <span class="pagination" id="pagination">
-  {% if page_obj.has_previous %}
-    <a href="?{{ page_obj.previous_page_number.querystring }}" class="extend prev">&lsaquo;&lsaquo; </a>
-  {% else %}
-    <span class="extend prev"></span>
-  {% endif %}
-  {% for page in page_obj.pages %}
-    {% if page %}
-      {% if firewalls page page_obj.number %}
-        <a href="#" class="page-number current">{{ page }}</a>
-      {% else %}
-        <a href="?{{ page.querystring }}" class="page-number">{{ page }}</a>
-      {% endif %}
-    {% else %}
-    ...
-    {% endif %}
-  {% endfor %}
-  {% if page_obj.has_next %}
-    <a href="?{{ page_obj.next_page_number.querystring }}" class="extend next"> &rsaquo;&rsaquo;</a>
-  {% else %}
-    <span class="extend next"></span>
-  {% endif %}
+{% if page_obj.has_previous %} {# 如果有上一页才可以点击<< #}
+<li class="previous">
+  {# 此处相对下面加了a标签, 可以点击 #}
+  <a href="?{{ page_obj.previous_page_number.querystring }}">
+    <span aria-hidden="true">&laquo;</span>
+  </a>
+</li>
+{% else %} {# 否则禁止点击上一页 #}
+<li class="previous disabled">
+  <span aria-hidden="true">&laquo;</span>
+</li>
+{% endif %}
+
+{% for page in page_obj.pages %}{# 遍历所有页数 #}
+{% if page %}
+{# 如果遍历到的数字和当前页相同, 则添加active, 高度 #}
+{% if page == page_obj.number %}
+<li class="active"><a href="javascript:;">{{ page }}</a></li>
+{% else %}
+<li><a href="?{{ page.querystring }}" class="page">{{ page }}</a></li>
+{% endif %}
+{% else %}
+<li class="disabled">
+  <span>...</span>
+</li>
+{% endif %}
+{% endfor %}
+
+{% if page_obj.has_next %}{# 如果有下一页才可以点击>> #}
+<li class="next">
+  {# 此处相对下面加了a标签, 可以点击 #}
+  <a href="?{{ page_obj.next_page_number.querystring }}">
+    <span aria-hidden="true">&raquo;</span>
+  </a>
+</li>
+{% else %}
+<li class="next disabled">
+  <span aria-hidden="true">&raquo;</span>
+</li>
+{% endif %}
 </span>
