@@ -1,10 +1,13 @@
 from .common import *
+import django
+from django.utils.encoding import force_str
+django.utils.encoding.force_text = force_str
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', '% k ^!^6-(z ^ +l*)i6-qg*el % 5*2-@ % +jx)jktqb!5t+j$5q1!9 &')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1', 'blog.lidangqi.com', 'django-blog']
 
