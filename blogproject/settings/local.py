@@ -7,7 +7,7 @@ django.utils.encoding.force_text = force_str
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', '% k ^!^6-(z ^ +l*)i6-qg*el % 5*2-@ % +jx)jktqb!5t+j$5q1!9 &')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1', 'blog.lidangqi.com', 'django-blog']
 
