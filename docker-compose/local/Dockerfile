@@ -14,6 +14,7 @@ RUN apk add jpeg-dev zlib-dev freetype-dev lcms2-dev openjpeg-dev tiff-dev tk-de
    && apk del gcc python3-dev musl-dev libc-dev libressl-dev libffi-dev openssl-dev cargo \
    && rm -rf /var/cache/apk/*
 
+COPY . /app
 COPY ./docker-compose/local/start.sh /start.sh
 RUN sed -i 's/\r//' /start.sh
 RUN chmod +x /start.sh
