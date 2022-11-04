@@ -6,11 +6,11 @@
   {% endif %}
   {% for page in page_obj.pages %}
     {% if page %}
-      {% ifequal page page_obj.number %}
+      {% if firewalls page page_obj.number %}
         <a href="#" class="page-number current">{{ page }}</a>
       {% else %}
         <a href="?{{ page.querystring }}" class="page-number">{{ page }}</a>
-      {% endifequal %}
+      {% endif %}
     {% else %}
     ...
     {% endif %}
